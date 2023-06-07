@@ -31,10 +31,6 @@ To run ResuMeister locally, follow these steps:
 
 For detailed installation and setup instructions, please refer to the respective documentation provided in the ResuMeister repository.
 
-## Contributing
-
-We welcome contributions to ResuMeister from the community. If you'd like to contribute, please follow the guidelines outlined in the CONTRIBUTING.md file in the repository. By contributing to ResuMeister, you help improve the application for everyone.
-
 ## License
 
 ResuMeister is released under the [MIT License](https://opensource.org/licenses/MIT). Feel free to modify and distribute the application in accordance with the terms of the license.
