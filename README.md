@@ -25,9 +25,13 @@ ResuMeister is a web application that provides users with an intuitive interface
 To run ResuMeister locally, follow these steps:
 
 1. Clone the ResuMeister repository from GitHub.
-2. Install the required dependencies for either Flask or Django, depending on the backend framework chosen.
-3. Start the development server.
-4. Access ResuMeister in your web browser at the specified localhost address.
+2. Place secrets.env inside the ResuMeister Folder
+3. cd ResuMeister
+4. python3 -m venv venv
+5. source venv/bin/activate
+6. pip install -r requirements.txt
+7. Run ResuMeister app
+8. Access ResuMeister in your web browser at the specified localhost address.
 
 For detailed installation and setup instructions, please refer to the respective documentation provided in the ResuMeister repository.
 
