@@ -1,0 +1,155 @@
+body{
+    
+    margin: 0px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.main-sepration{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.title-half{
+    text-align: center;
+    background-color: #1B515A;
+    width: 50vw;
+    height: 100vh;
+    color: white;
+    position: relative;
+   
+
+}
+
+#resume-image{
+    width: 40vw;
+    height: 50vh;
+    margin-top: 1vh;
+    
+}
+
+.register-half{
+    text-align: center;
+    background-color: #FEBA33;
+    width: 50vw;
+    height: 100vh;
+    position: relative;
+    right: 0px;
+}
+
+
+
+.title-content{
+ display: flex;
+ flex-direction: column;
+}
+
+#name-title{
+    font-size: 3rem;
+    margin-top: 10vh;
+    margin-bottom: 0px;
+}
+
+.register-half{
+   display: flex;
+   justify-content: center;
+   
+}
+ .register-box{
+    height: 60vh;
+    width: 30vw;
+    background-color: white;
+    margin: auto;
+    border-radius: 2rem;
+    box-shadow: 0 20px 4px rgba(0, 0, 0, 0.2); 
+
+}
+
+/* .register-form-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 5vh;
+} */ */
+
+
+/* .register-box {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f5f5f5;
+  } */
+  
+.register-title {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+.register-title h1 {
+    color: #333;
+    font-size: 30px;
+  }
+.register-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    
+}
+.register-form-content {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem;
+    font-size: 20px;
+  }
+  
+.register-form-content label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+.name-sec{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    
+}
+#firstName, #lastName{
+    width: 50%;
+}
+
+.register-form-content input[type="text"] {
+    padding: 0.6rem;
+    margin-bottom: 0.6rem;
+    margin-right: 2rem;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+}
+
+.register-form-content input[type="email"],
+.register-form-content input[type="password"]
+ { 
+    padding: 0.6rem;
+    margin-bottom: 0.6rem;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+  }
+  
+.register-form-content input[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin: auto;
+    font-size: 1rem;
+  }
+  
+.register-form-content input[type="submit"]:hover {
+    background-color: #555;
+}
+
+
+#email, #pass, #firstName, #lastName, #confirmPass{
+    font-size:0.8em;
+}
