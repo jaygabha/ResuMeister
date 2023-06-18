@@ -1,0 +1,88 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap');
+
+body{
+    padding: 0px;
+    margin: 0px;
+    background-color: #FEBA33;
+    font-family: 'Rubik', sans-serif;
+}
+
+.upper-nav{
+    /* background-color: #fff; */
+    width: 100vw;
+    height: 10vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.upper-nav h1{
+    font-size: 2rem;
+    
+}
+.buttons-sec{
+    margin-top: 1rem;
+    
+}
+input[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-left: 2rem;
+    font-size: 1rem;
+  }
+  
+input[type="submit"]:hover {
+    background-color: #18454e;
+}
+
+.lower-half{
+    display: flex;
+    flex-direction:row;
+}
+.left-sec{
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+    height: 80vh;
+    justify-content: center;
+    
+}
+#content{
+    text-align:center
+}
+.content-text h1{
+    font-size: 3rem;
+}
+.right-sec{
+   
+    width: 50vw;
+    height: 80vh;
+}
+.content-text{
+    text-align: center;
+}
+#image1{
+    width: 50vw;
+    height: 50vh;
+    margin-top: 10rem;
+}
+
+#try-now{
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-left: 2rem;
+    font-size: 1.5rem;
+    
+  }
+  
+#try-now:hover {
+    background-color: #18454e;
+}

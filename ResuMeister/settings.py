@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'resumeister_app.apps.ResumeisterAppConfig',
+    
 ]
 
 MIDDLEWARE = [
