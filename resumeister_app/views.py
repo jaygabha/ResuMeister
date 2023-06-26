@@ -49,11 +49,38 @@ class LoginView(View):
 
 class RegisterView(View):
     def get(self, request):
-        response = render(request, 'resumeister_app/register.html')
+        if request.session.has_key('email'):
+            return redirect('/homepage_logged_in')
+        msg = ''
+        msg = request.GET.get('msg')
+        response = render(request, 'resumeister_app/register.html', {"msg": msg})
         return response
     def post(self, request):
         if request.session.has_key('email'):
             return redirect('/homepage_logged_in')
+        else:
+            email = request.POST.get("email")
+            pwd = request.POST.get("pass")
+            first_name = request.POST.get("firstName")
+            last_name = request.POST.get("lastName")
+            user = db["users"].find_one({"email": email})
+            if user:
+                base_url = reverse('resumeister_app:Login', )
+                query_string = urlencode({'msg': "Account Already Exists. Please login"})
+                url = '{}?{}'.format(base_url, query_string)
+                return redirect(url)
+            else:
+                db['users'].insert_one({
+                    "email": email,
+                    "password": pwd,
+                    "first_name": first_name,
+                    "last_name": last_name
+                })
+                request.session['email'] = email
+                request.session['first_name'] = first_name
+                request.session['last_name'] = last_name
+                return redirect('/homepage_logged_in')
+
 
 class Home(View):
     def get(self,request):

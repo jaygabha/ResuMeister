@@ -13,7 +13,7 @@
             <div class="title-content"></div>
             <h1 id="name-title">ResuMeister</h1>
             <h2><i>"Building Careers One Resume at a Time."</i></h2>
-            <image src="images/registerImage.svg" alt="resume" id="resume-image"></image>
+            <image src="/static/images/registerImage.svg" alt="resume" id="resume-image"></image>
         </div>
 
         <div class="register-half">
@@ -22,8 +22,8 @@
                     <h1>Register</h1>
                 </div>
                 <div class="register-form">
-                    <form class="register-form-content">
-                        
+                    <form class="register-form-content" action="register" method="POST">
+                        {% csrf_token %}
                         <div class="name-sec">
                         <input type="text" id="firstName" name="firstName" placeholder="First name" required>
                         <input type="text" id="lastName" name="lastName" placeholder="Last name" required>
@@ -37,8 +37,12 @@
                         <br>
                         
                         <input type="password" id="confirmPass" name="confirmPass" placeholder="Confirm your password" required>
-                        <br>
                         <!-- Just a temp onclick event for smooth transition -->
+                        {% if msg %}
+                            <p>{{msg}}</p>
+                        {% else %}
+                            <br>
+                        {% endif %}
                         <input type="submit" value="Register" onclick = 'location.href = "/login"'>
                       </form>
                       
