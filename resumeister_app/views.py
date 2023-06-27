@@ -12,7 +12,7 @@ from django.views import View
 class HomePageView(View):
     def get(self, request):
         if request.session.has_key('email'):
-            return redirect('/homepage_logged_in')
+            return redirect('/main')
         return render(request, 'resumeister_app/home.html')
 
 
@@ -24,7 +24,7 @@ class LoginView(View):
         return response
     def post(self, request):
         if request.session.has_key('email'):
-            return redirect('/homepage_logged_in')
+            return redirect('/main')
         else:
             email = request.POST.get("email")
             pwd = request.POST.get("pass")
@@ -34,7 +34,7 @@ class LoginView(View):
                     request.session['email'] = email
                     request.session['first_name'] = user["first_name"]
                     request.session['last_name'] = user["last_name"]
-                    return redirect('/homepage_logged_in')
+                    return redirect('/main')
                 else:
                     base_url = reverse('resumeister_app:Login',)
                     query_string = urlencode({'msg': "Incorrect Password. Please try again"})
@@ -50,14 +50,14 @@ class LoginView(View):
 class RegisterView(View):
     def get(self, request):
         if request.session.has_key('email'):
-            return redirect('/homepage_logged_in')
+            return redirect('/main')
         msg = ''
         msg = request.GET.get('msg')
         response = render(request, 'resumeister_app/register.html', {"msg": msg})
         return response
     def post(self, request):
         if request.session.has_key('email'):
-            return redirect('/homepage_logged_in')
+            return redirect('/main')
         else:
             email = request.POST.get("email")
             pwd = request.POST.get("pass")
@@ -79,11 +79,17 @@ class RegisterView(View):
                 request.session['email'] = email
                 request.session['first_name'] = first_name
                 request.session['last_name'] = last_name
-                return redirect('/homepage_logged_in')
+                return redirect('/main')
 
 
 class Home(View):
     def get(self,request):
-        response = HttpResponse()
-        response.write("<p> Email: " + request.session.get("email") + "</p>")
-        return response
+        # response = HttpResponse()
+        # response.write("<p> Email: " + request.session.get("email") + "</p>")
+        return render(request, 'resumeister_app/main.html')
+    
+# class Main(View):
+#     def get(self,request):
+#         if request.session.has_key('email'):
+#             return redirect('/homepage_logged_in')
+#         return render(request, 'resumeister_app/main.html')

@@ -7,5 +7,6 @@ urlpatterns = [
     path('', HomePageView.as_view(), name='Landing Page'),
     path('login', LoginView.as_view(), name='Login'),
     path('register', RegisterView.as_view(), name="Register"),
-    path('homepage_logged_in', Home.as_view(), name="Homepage Logged In"),
+    path('main', Home.as_view(), name="Homepage Logged In"),
+    
 ]
