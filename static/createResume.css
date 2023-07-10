@@ -61,6 +61,9 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: left;
+    outline: none;
+    border: none;
+    
    
 }
 .header-part{
@@ -90,13 +93,20 @@ flex-direction: row;
     font-size: 1.5rem;
     padding-left: 1rem;
     font-weight: bold;
+    outline: none;
+    border: none;
 }
 #linkedIn
 {
     padding-left: 1rem;
-    /* border: none;
-    outline: none; */
+    border: none;
+    outline: none;
 
+}
+#address, #email, #github, #phone{
+    border: none;
+    outline: none;
+    padding-left: 1rem;
 }
 .body-part{
     margin-top: 0rem;
@@ -104,9 +114,10 @@ flex-direction: row;
 .body-part1{
     display: flex;
     flex-direction: row;
-    
-   
 }
+textarea {
+    resize: none;
+  }
 .summary{
     display: flex;
     flex-direction: column;
@@ -131,40 +142,137 @@ flex-direction: row;
     padding-right: 100%;
     margin-bottom:0rem;
     padding-left: 1rem;
+    outline: none;
+    border: none;
+    
+}
+#duration{
+    outline: none;
+    border: none;
 }
 
 #summary-detail{
     margin-top: 0rem;
     padding-left: 1rem;
-    /* outline: none;
+    outline: none;
     border: none;
-     */
+    
 }
 #skills-detail{
     margin-top: 0rem;
     padding-left: 1rem;
-    /* outline: none;
-    border: none; */
+    outline: none;
+    border: none;
+    
 }
 #education-detail{
     margin-top: 0rem;
     padding-left: 1rem;
     
-    /* outline: none;
-    border: none; */
+    outline: none;
+    border: none;
 }
 
 #degree{
 font-weight: bold;
 padding-left: 1rem;
+width: 40%;
+outline: none;
+border: none;
 }
 #university{
     padding-left: 1rem;
     font-style: italic;
+    width: 40%;
+    outline: none;
+    border: none;
 }
 
 .degree-duration{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+.project-duration{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.projects-1{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.projects-2{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.projects-3{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#project{
+    font-weight: bold;
+    padding-left: 1rem;
+    width: 40%;
+    outline: none;
+    border: none;
+}
+#organisation{
+    padding-left: 1rem;
+    font-style: italic;
+    width: 40%;
+    outline: none;
+    border: none;
+}
+#project-detail{
+    margin-top: 0rem;
+    padding-left: 1rem;
+    outline: none;
+    border: none;
+}
+#experience-detail{
+    margin-top: 0rem;
+    padding-left: 1rem;
+    outline: none;
+    border: none;
+}
+
+.experience-duration{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+#experience-detail{
+    margin-top: 0rem;
+    padding-left: 1rem;
+    
+    outline: none;
+    border: none;
+}
+.experience-1{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.experience-2{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.experience-3{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#experience{
+    font-weight: bold;
+    padding-left: 1rem;
+    width: 40%;
+    outline: none;
+    border: none;
 }
