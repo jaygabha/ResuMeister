@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResuMeister</title>
+    <link rel="stylesheet" href="../../../static/createResume.css">
+    <link rel="icon" type="image/x-icon" href="../../../static/images/favicon.ico">
+</head>
+<body>
+    <div class="upper-nav">
+           
+        <h1>ResuMeister</h1>
+        <div class="buttons-sec">
+            <input type="submit" value="Log Out" onclick = 'location.href = "/login"' id="logout"> 
+        </div>
+    </div>
+    <br>
+    <div class="main-body">
+        <h1>Let's build your resume</h1>
+     <div class="input-card">    <!--  This is where the resume will be built -->
+            <div class="sec-form">
+                <div class="header-part">
+                <form class="header-inputs1">
+                    <input type="text" name="Name" id="name" placeholder="Enter Your Full Name">
+                    <input type="text" name="linkedIn" id="linkedIn" placeholder="LinkedIn Username">
+                </form>
+                <form class="header-inputs2">
+                    <input type="address" name="address" id="address" placeholder="Enter Your Address">
+                    <input type="email" name="email" id="email" placeholder="Enter Your Email ID">
+                    <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" placeholder="Enter Your Phone Number">
+                    <input type="link" name="github" id="github" placeholder="Enter Your Github ID (optional)">
+                </form>
+            </div>
+            <br>
+            <div class="body-part">
+                <div class="body-part1">
+                    <div class="summary">
+                        
+                    <h4 id="Subhead">Profile</h4>
+                    <hr style="width:100%;text-align:left;margin-left:0; border-style: inset;">
+                    <form class="summary">
+                        <textarea type="text" name="summary" id="summary-detail" cols="97" rows="3" placeholder="Enter Your Profile Summary"></textarea>
+                    </form>
+                    </div>
+                </div>
+                <div class="body-part2">
+                    <div class="skills">
+                        
+                    <h4 id="Subhead">Skills</h4>
+                    <hr style="width:100%;text-align:left;margin-left:0; border-style: inset;">
+                    <form class="skills">
+                        <textarea type="text" name="skills" id="skills-detail" cols="97" rows="5" placeholder="Enter your skills in form or bullets."></textarea>
+                    </form>
+                    </div>
+                </div>
+                <div class="body-part3">
+                    <div class="Education">
+                        
+                    <h4 id="Subhead">Education</h4>
+                    <hr style="width:100%;text-align:left;margin-left:0; border-style: inset;">
+                    <form class="education-1">
+                        <div class="degree-duration">
+                        <input type="text" name="degree" id="degree" placeholder="Enter Your Degree">
+                        <input type="text" name="duration" id="duration" placeholder="Enter Duration">
+                    </div>
+                        <input type="text" name="university" id="university" placeholder="Enter Your University Name, City, Country">
+                        <textarea type="text" name="education" id="education-detail" cols="97" rows="3" placeholder="Enter your education details in form"></textarea>
+                        
+                    </form>
+                    <br>
+                    <form class="education-2">
+                        <div class="degree-duration">
+                        <input type="text" name="degree" id="degree" placeholder="Enter Your Degree">
+                        <input type="text" name="duration" id="duration" placeholder="Enter Duration">
+                    </div>
+                        <input type="text" name="university" id="university" placeholder="Enter Your University Name, City, Country">
+                        <textarea type="text" name="education" id="education-detail" cols="97" rows="3" placeholder="Enter your education details in form"></textarea>
+                        
+                    </form>
+                    </div>
+                </div>
+            </div>
+            
+
+            </div>
+        </div>
+    </div>
+
+
+
+    
+</body>
+</html>

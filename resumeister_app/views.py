@@ -93,3 +93,11 @@ class Home(View):
 #         if request.session.has_key('email'):
 #             return redirect('/homepage_logged_in')
 #         return render(request, 'resumeister_app/main.html')
+
+
+
+class CreateResume(View):
+    def get(self,request):
+        # response = HttpResponse()
+        # response.write("<p> Email: " + request.session.get("email") + "</p>")
+        return render(request, 'resumeister_app/createResume.html')

@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap');
+body{
+    padding: 0px;
+    margin: 0px;
+    background-color: #FEBA33;
+    font-family: 'Rubik', sans-serif;
+}
+.upper-nav{
+    background-color:#18454e;
+    width: 100vw;
+    height: 10vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    position: fixed;
+    color:#fff;
+}
+.upper-nav h1{
+    font-size: 2rem;
+    
+}
+.buttons-sec{
+    margin-top: 1rem;
+    
+}
+#logout{
+    background-color: #fff;
+    color: black;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-left: 2rem;
+    font-size: 1rem;
+  }
+
+.main-body{
+    margin-top: 5vh;
+    display: flex;
+    flex-direction:column;
+    text-align: center;
+    align-items: center;
+    
+}
+
+.input-card{
+    width: 60vw;
+    height: 180vh;
+    background-color: #fff;
+    border-radius: 10px;
+    margin-top: 5vh;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    color:black;
+    
+    
+}
+
+.sec-form{
+    border: 2px solid #18454e;
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+   
+}
+.header-part{
+display: flex;
+flex-direction: row;
+}
+.header-inputs1{
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+}
+
+.header-inputs2{
+    display: flex;
+    flex-direction: column;
+    margin-left: 5rem;
+    width: 20vw;
+   
+    
+}
+#name{
+    width: 30vw;
+    height: 5vh;
+    border-radius: 5px;
+    border: 2px solid #18454e;
+    outline: none;
+    font-size: 1.5rem;
+    padding-left: 1rem;
+    font-weight: bold;
+}
+#linkedIn
+{
+    padding-left: 1rem;
+    /* border: none;
+    outline: none; */
+
+}
+.body-part{
+    margin-top: 0rem;
+}
+.body-part1{
+    display: flex;
+    flex-direction: row;
+    
+   
+}
+.summary{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.skills{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.education-1{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.education-2{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+#Subhead{
+    padding-right: 100%;
+    margin-bottom:0rem;
+    padding-left: 1rem;
+}
+
+#summary-detail{
+    margin-top: 0rem;
+    padding-left: 1rem;
+    /* outline: none;
+    border: none;
+     */
+}
+#skills-detail{
+    margin-top: 0rem;
+    padding-left: 1rem;
+    /* outline: none;
+    border: none; */
+}
+#education-detail{
+    margin-top: 0rem;
+    padding-left: 1rem;
+    
+    /* outline: none;
+    border: none; */
+}
+
+#degree{
+font-weight: bold;
+padding-left: 1rem;
+}
+#university{
+    padding-left: 1rem;
+    font-style: italic;
+}
+
+.degree-duration{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
