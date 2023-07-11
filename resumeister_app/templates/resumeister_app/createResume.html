@@ -40,7 +40,7 @@
                     <h4 id="Subhead">Profile</h4>
                     <hr style="width:100%;text-align:left;margin-left:0; border-style: inset;">
                     <form class="summary">
-                        <textarea type="text" name="summary" id="summary-detail" cols="97" rows="3" placeholder="Enter Your Profile Summary"></textarea>
+                        <textarea type="text" name="summary" id="summary-detail" cols="97" rows="5" placeholder="Enter Your Profile Summary (500 char max)" maxlength="500"></textarea>
                     </form>
                     </div>
                 </div>
@@ -56,8 +56,15 @@
                 </div>
                 <div class="body-part3">
                     <div class="Education">
-                        
+                     <div class="edu-head">
+                        <div class="title-edu">
                     <h4 id="Subhead">Education</h4>
+                </div>
+                    <div class="edu-btns">
+                        <button id="add">+</button>
+                        <button id="delete">-</button>
+                    </div>
+                    </div> 
                     <hr style="width:100%;text-align:left;margin-left:0; border-style: inset;">
                     <form class="education-1">
                         <div class="degree-duration">
@@ -83,7 +90,15 @@
                 <div class="body-part4">
                     <div class="Work Experience">
                         
-                    <h4 id="Subhead">Experience</h4>
+                        <div class="exp-head">
+                            <div class="title-exp">
+                        <h4 id="Subhead">Experience</h4>
+                    </div>
+                        <div class="exp-btns">
+                            <button id="add">+</button>
+                            <button id="delete">-</button>
+                        </div>
+                        </div> 
                     <hr style="width:100%;text-align:left;margin-left:0; border-style: inset;">
                     <form class="experience-1">
                         <div class="experience-duration">
@@ -117,8 +132,16 @@
                 </div>
                 <div class="body-part5">
                     <div class="Projects">
-                        
-                    <h4 id="Subhead">Projects</h4>
+                        <div class="pro-head">
+                            <div class="title-pro">
+                        <h4 id="Subhead">Projects</h4>
+                    </div>
+                        <div class="pro-btns">
+                            <button id="add">+</button>
+                            <button id="delete">-</button>
+                        </div>
+                        </div>     
+                    
                     <hr style="width:100%;text-align:left;margin-left:0; border-style: inset;">
                     <form class="projects-1">
                         <div class="project-duration">
@@ -140,6 +163,49 @@
                     </form>
                     <br>
                     <form class="projects-3">
+                        <div class="project-duration">
+                        <input type="text" name="project" id="project" placeholder="Enter Your Project Name">
+                        <input type="text" name="duration" id="duration" placeholder="Enter Duration">
+                    </div>
+                        <input type="text" name="organisation" id="organisation" placeholder="Enter Your Organisation Name, City, Country">
+                        <textarea type="text" name="project" id="project-detail" cols="97" rows="3" placeholder="Enter your project details in form"></textarea>
+                        
+                    </form>
+                    </div>
+                </div>
+                <div class="body-part6">
+                    <div class="Certificates">
+                        <div class="cer-head">
+                            <div class="title-cer">
+                        <h4 id="Subhead">Certifications</h4>
+                    </div>
+                        <div class="cer-btns">
+                            <button id="add">+</button>
+                            <button id="delete">-</button>
+                        </div>
+                        </div>     
+                    
+                    <hr style="width:100%;text-align:left;margin-left:0; border-style: inset;">
+                    <form class="certification-1">
+                        <div class="project-duration">
+                        <input type="text" name="project" id="project" placeholder="Enter Your Project Name">
+                        <input type="text" name="duration" id="duration" placeholder="Enter Duration">
+                    </div>
+                        <input type="text" name="organisation" id="organisation" placeholder="Enter Your Organisation Name, City, Country">
+                        <textarea type="text" name="project" id="project-detail" cols="97" rows="3" placeholder="Enter your project details in form"></textarea>
+                        
+                    </form>
+                    <br>
+                    <form class="certification-2">
+                        <div class="project-duration">
+                            <input type="text" name="project" id="project" placeholder="Enter Your Project Name">
+                            <input type="text" name="duration" id="duration" placeholder="Enter Duration">
+                    </div>
+                    <input type="text" name="organisation" id="organisation" placeholder="Enter Your Organisation Name, City, Country">
+                    <textarea type="text" name="project" id="project-detail" cols="97" rows="3" placeholder="Enter your project details in form"></textarea>
+                    </form>
+                    <br>
+                    <form class="certification-3">
                         <div class="project-duration">
                         <input type="text" name="project" id="project" placeholder="Enter Your Project Name">
                         <input type="text" name="duration" id="duration" placeholder="Enter Duration">

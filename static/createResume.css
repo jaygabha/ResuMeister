@@ -45,7 +45,7 @@ body{
 
 .input-card{
     width: 60vw;
-    height: 180vh;
+    height: 280vh;
     background-color: #fff;
     border-radius: 10px;
     margin-top: 5vh;
@@ -87,14 +87,13 @@ flex-direction: row;
 #name{
     width: 30vw;
     height: 5vh;
-    border-radius: 5px;
-    border: 2px solid #18454e;
     outline: none;
     font-size: 1.5rem;
     padding-left: 1rem;
     font-weight: bold;
     outline: none;
     border: none;
+    
 }
 #linkedIn
 {
@@ -127,6 +126,68 @@ textarea {
     display: flex;
     flex-direction: column;
     width: 100%;
+}
+.edu-head{
+    display: flex;
+    flex-direction: row;
+    
+
+}
+.edu-btns{
+   margin-left: 80%;
+   display: flex;
+   flex-direction: row;
+}
+.exp-head{
+    display: flex;
+    flex-direction: row;
+    
+
+}
+.exp-btns{
+   margin-left: 80%;
+   display: flex;
+   flex-direction: row;
+}
+
+.pro-head{
+    display: flex;
+    flex-direction: row;
+    
+
+}
+.pro-btns{
+   margin-left: 80%;
+   display: flex;
+   flex-direction: row;
+}
+
+.cer-head{
+    display: flex;
+    flex-direction: row;
+    
+
+}
+.cer-btns{
+   margin-left: 80%;
+   display: flex;
+   flex-direction: row;
+}
+
+#add{
+    outline: none;
+    border: none;
+    background-color: #fff;
+}
+#add:active,#delete:active{
+    font-size: 1rem;
+    background-color: #18454e;
+    color: #fff;
+}
+#delete{
+    outline: none;
+    border: none;
+    background-color: #fff;
 }
 .education-1{
     display: flex;
@@ -176,14 +237,14 @@ textarea {
 #degree{
 font-weight: bold;
 padding-left: 1rem;
-width: 40%;
+width: 50%;
 outline: none;
 border: none;
 }
 #university{
     padding-left: 1rem;
     font-style: italic;
-    width: 40%;
+    width: 50%;
     outline: none;
     border: none;
 }
@@ -209,6 +270,22 @@ border: none;
     width: 100%;
 }
 .projects-3{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.certification-1{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.certification-2{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.certification-3{
     display: flex;
     flex-direction: column;
     width: 100%;
