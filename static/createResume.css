@@ -184,6 +184,41 @@ textarea {
     background-color: #18454e;
     color: #fff;
 }
+
+#add-experience{
+    outline: none;
+    border: none;
+    background-color: #fff;
+}
+
+#add-experience:active,#delete:active{
+    font-size: 1rem;
+    background-color: #18454e;
+    color: #fff;
+}
+
+#add-certifications{
+    outline: none;
+    border: none;
+    background-color: #fff;
+}
+#add-certifications:active,#delete:active{
+    font-size: 1rem;
+    background-color: #18454e;
+    color: #fff;
+}
+
+#add-project{
+    outline: none;
+    border: none;
+    background-color: #fff;
+}
+#add-project:active,#delete:active{
+    font-size: 1rem;
+    background-color: #18454e;
+    color: #fff;
+}
+
 #delete{
     outline: none;
     border: none;
@@ -298,12 +333,30 @@ border: none;
     outline: none;
     border: none;
 }
+
+#certification{
+    font-weight: bold;
+    padding-left: 1rem;
+    width: 40%;
+    outline: none;
+    border: none;
+}
+
 #organisation{
     padding-left: 1rem;
     font-style: italic;
     width: 40%;
     outline: none;
     border: none;
+}
+
+#organisation-project{
+    padding-left: 1rem;
+    font-style: italic;
+    width: 40%;
+    outline: none;
+    border: none;
+    margin-left: 0;
 }
 #project-detail{
     margin-top: 0rem;
@@ -312,6 +365,13 @@ border: none;
     border: none;
 }
 #experience-detail{
+    margin-top: 0rem;
+    padding-left: 1rem;
+    outline: none;
+    border: none;
+}
+
+#certification-detail{
     margin-top: 0rem;
     padding-left: 1rem;
     outline: none;
