@@ -17,8 +17,42 @@ def parse_resume():
     try:
         file_path = str(request.args.get("file_path"))
         data = resumeparse.read_file(file_path)
-        return json.dumps({'parsed_resume': data})
+        extracted_fields = {}
+        extracted_fields["fullname"] = data.get("name")
+        extracted_fields["email"] = data.get("email")
+        extracted_fields["phone"] = data.get("phone")
+        extracted_fields["linkedin"] = ""
+        extracted_fields["github"] = ""
+        extracted_fields["education"] = []
+        for i in range(0,len(data.get("university"))):
+            uni_dict = {}
+            uni_dict["university"] = data.get("university")[i]
+            if len(data.get("degree"))>i:
+                uni_dict["program"] = data.get("degree")[i]
+            else:
+                uni_dict["program"] = ""
+            uni_dict["graduation"] = ""
+            uni_dict["grade"] = ""
+            uni_dict["coursework"] = []
+            extracted_fields["education"].append(uni_dict)
+        
+        extracted_fields["skills"] = data.get("skills")
+        extracted_fields["experience"] = []
+        for i in range(0, len(data.get("Companies worked at"))):
+            exp_dict = {}
+            if len(data.get("designition"))>=i:
+                exp_dict["position"] = data.get("designition")[i]
+            else:
+                exp_dict["position"] = ""
+            exp_dict["company"] = data.get("Companies worked at")[i]
+            exp_dict["location"] = ""
+            exp_dict["duration"] = ""
+            exp_dict["points"] = []
+            extracted_fields["experience"].append(exp_dict)
+
+        return json.dumps({'parsed_resume': extracted_fields})
     except Exception as e:
+        print(e)
         return json.dumps({"Error": str(e)})
 
 
