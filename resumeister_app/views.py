@@ -121,7 +121,6 @@ class UploadResume(View):
             filename = str('/Users/jayga/PycharmProjects/ResuMeister/ParsingApp/new_upload.' + ext)
             handle_uploaded_file(request.FILES["file"], filename)
             data = requests.get("http://127.0.0.1:5004/parse_resume", params={"file_path": filename}).json().get("parsed_resume")
-            return render(request, 'resumeister_app/createResume.html', {"data": data} )
+            return render(request, 'resumeister_app/createResume.html', {"data": data})
         else:
             raise FileNotFoundError
-ç
