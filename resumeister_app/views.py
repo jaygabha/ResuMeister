@@ -7,7 +7,8 @@ from utils import db
 from django.urls import reverse
 from urllib.parse import urlencode
 from django.views import View
-
+from .forms import UploadFileForm
+import requests
 
 class HomePageView(View):
     def get(self, request):
@@ -101,3 +102,26 @@ class CreateResume(View):
         # response = HttpResponse()
         # response.write("<p> Email: " + request.session.get("email") + "</p>")
         return render(request, 'resumeister_app/createResume.html')
+
+
+def handle_uploaded_file(f, filename):
+    with open(filename, 'wb+') as destination:
+        for chunk in f.chunks():
+            destination.write(chunk)
+class UploadResume(View):
+    def get(self, request):
+        form = UploadFileForm()
+        return render(request, 'resumeister_app/uploadResume.html', {"form": form})
+
+    def post(self, request):
+        form = UploadFileForm(request.POST, request.FILES)
+        if form.is_valid():
+            name = str(request.FILES["file"].name)
+            ext = name.split('.')[-1]
+            filename = str('/Users/jayga/PycharmProjects/ResuMeister/ParsingApp/new_upload.' + ext)
+            handle_uploaded_file(request.FILES["file"], filename)
+            data = requests.get("http://127.0.0.1:5004/parse_resume", params={"file_path": filename}).json().get("parsed_resume")
+            return render(request, 'resumeister_app/createResume.html', {"data": data} )
+        else:
+            raise FileNotFoundError
+ç
