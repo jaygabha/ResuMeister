@@ -1,0 +1,27 @@
+<!-- skill_extractor_app/templates/index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Job Description Skill Extractor</title>
+</head>
+<link rel="stylesheet" href="../../../static/skills.css">
+<body>
+  <div class="nav-bar">
+    <h1>ResuMeister</h1>
+    <div class="nav-btns">
+        <input type="submit" value="Home" onclick = 'location.href = "/main"' id="main">
+        <input type="submit" value="Log Out" onclick = 'location.href = "/login"' id="logout">
+    </div>
+  </div>
+    <div class="main-body">
+    <h1>Job Description Skill Extractor</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <textarea name="job_description" cols="100" rows="20" placeholder="Simply Enter or Paste your Job Description Here"></textarea>
+        <br>
+        <input type="submit" value="Extract Skills" id="skills">
+    </form>
+    </div>
+</body>
+</html>
