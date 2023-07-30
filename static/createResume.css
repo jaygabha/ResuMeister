@@ -133,8 +133,19 @@ textarea {
     
 
 }
+.skill-head{
+    display: flex;
+    flex-direction: row;
+    
+
+}
 .edu-btns{
    margin-left: 80%;
+   display: flex;
+   flex-direction: row;
+}
+.skill-btns{
+   margin-left: 84%;
    display: flex;
    flex-direction: row;
 }
@@ -174,6 +185,16 @@ textarea {
    flex-direction: row;
 }
 
+#add-skills{
+    outline: none;
+    border: none;
+    background-color: #fff;
+}
+#add-skills:active,#delete:active{
+    font-size: 1rem;
+    background-color: #18454e;
+    color: #fff;
+}
 #add{
     outline: none;
     border: none;
@@ -192,6 +213,18 @@ textarea {
 }
 
 #add-experience:active,#delete:active{
+    font-size: 1rem;
+    background-color: #18454e;
+    color: #fff;
+}
+
+#add-experience-roles{
+    outline: none;
+    border: none;
+    background-color: #fff;
+}
+
+#add-experience-roles:active,#delete:active{
     font-size: 1rem;
     background-color: #18454e;
     color: #fff;
@@ -282,6 +315,75 @@ border: none;
     width: 50%;
     outline: none;
     border: none;
+}
+.courework-head{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-evenly;
+    margin-left: 1rem;
+}
+/* #gpa{
+    padding-left: 1rem;
+    font-style: italic;
+    width: 50%;
+    outline: none;
+    border: none;
+} */
+
+.gpa{
+    padding-left: 1rem;
+    font-style: italic;
+    width: 50%;
+    outline: none;
+    border: none;
+}
+
+.skill-input-div{
+   display: flex;
+   flex-direction: row;
+   justify-content: flex-start;
+}
+.skill_input_category{
+    padding-left: 1rem;
+    font-style: italic;
+    outline: none;
+    border: none;
+    font-weight: bold;
+   
+}
+.skill_input{
+    padding-left: 1rem;
+    font-style: italic;
+    width: 70%;
+    outline: none;
+    border: none;
+}
+
+/* #coursework-label{
+    text-align: left; font-size: small; margin-left: 1rem; margin-top: 10px;
+} */
+.coursework-label{
+    text-align: left; font-size: small; margin-left: 1rem; margin-top: 10px;
+}
+
+.ul-bullet-course{
+    margin-top: 0;
+}
+
+.coursework-bullet{
+    padding-left: 1rem;
+    font-style: italic;
+    outline: none;
+    border: none;
+    text-align: left; 
+    width: 100%;
+}
+
+.experience-role-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
 }
 
 .degree-duration{

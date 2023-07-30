@@ -6,6 +6,7 @@
     <title>ResuMeister</title>
     <link rel="stylesheet" href="../../../static/createResume.css">
     <link rel="icon" type="image/x-icon" href="../../../static/images/favicon.ico">
+    
 </head>
 <body>
     <div class="upper-nav">
@@ -18,7 +19,7 @@
     <br>
     <div class="main-body">
         <h1>Let's build your resume</h1>
-     <div class="input-card">    <!--  This is where the resume will be built -->
+     <div id ='resume-card-full' class="input-card">    <!--  This is where the resume will be built -->
             <div class="sec-form">
                 <div class="header-part">
                 <form class="header-inputs1">
@@ -46,12 +47,28 @@
                 </div>
                 <div class="body-part2">
                     <div class="skills">
-                        
-                    <h4 id="Subhead">Skills</h4>
+                    <div class="skill-head">
+                        <div class="title-edu">
+                            <h4 id="Subhead">Skills</h4>
+                        </div>
+                        <div class="skill-btns">
+                            <button id="add-skills">+</button>
+                            <button id="delete" onclick="removeFormSkill()">-</button>
+                        </div>
+                    </div>
+                    <!-- <h4 id="Subhead">Skills</h4> -->
                     <hr style="width:100%;text-align:left;margin-left:0; border-style: inset;">
+                    <div id = 'formContainer-skills'>
                     <form class="skills">
-                        <textarea type="text" name="skills" id="skills-detail" cols="97" rows="5" placeholder="Enter your skills in form or bullets."></textarea>
+                        <!-- <textarea type="text" name="skills" id="skills-detail" cols="97" rows="5" placeholder="Enter your skills in form or bullets."></textarea> -->
+                        <div class="skill-input-div">
+                            <input type="text" id="skill_category_id" name="skill_category_name" class="skill_input_category" placeholder="Category">
+                            <p>:</p>
+                            <input type="text" id="skill_skils_id" name="skill_skils_name" class="skill_input" placeholder="Skills">
+                        </div>
+                        
                     </form>
+                    </div>
                     </div>
                 </div>
                 <div class="body-part3">
@@ -70,11 +87,18 @@
                     <div id = 'formContainer'>
                         <form class="education-1">
                             <div class="degree-duration">
-                            <input type="text" name="degree" id="degree" placeholder="Enter Your Degree">
+                            <input type="text" name="degree" id="degree" placeholder="Enter Your Program's Name">
                             <input type="text" name="duration" id="duration" placeholder="Enter Duration">
                             </div>
                             <input type="text" name="university" id="university" placeholder="Enter Your University Name, City, Country">
-                            <textarea type="text" name="education" id="education-detail" cols="97" rows="3" placeholder="Enter your education details in form" ></textarea>
+                            <input type="text" name="gpa" class="gpa" placeholder="GPA">
+                           
+                            <label id="coursework-label" class="coursework-label">Relevent CourseWork:</label>
+                            <ul class="ul-bullet-course">
+                                <li><input type="text" name="coursework-bullet" id="coursework-bullet"  class="coursework-bullet" placeholder="write something"></li>
+                                
+                            </ul>
+                            <!-- <textarea type="text" name="education" id="education-detail" cols="97" rows="3" placeholder="Enter your education details in form" ></textarea> -->
                             
                         </form>
 {#                        <br>#}
@@ -102,7 +126,23 @@
                         <input type="text" name="duration" id="duration" placeholder="Enter Duration">
                         </div>
                         <input type="text" name="organisation" id="organisation" placeholder="Enter Your Organisation Name, City, Country">
-                        <textarea type="text" name="experience" id="experience-detail" cols="97" rows="3" placeholder="Enter your experience details in form"></textarea>
+                        <div class="experience-role-div">
+                            <div>
+                                <h5 id="Subhead" >Roles:</h5>
+                            </div>                            
+                            <div class="exp-btns">
+                                <button id="add-experience-roles">+</button>
+                                <button id="delete" onclick="removeFormExperience()">-</button>
+                            </div>
+                        </div>
+                        <div id="form-container-roles">
+                            <ul id="ul-exp-roles" class="ul-bullet-course">
+                                <li><input type="text" name="roles-bullet" id="roles-bullet"  class="coursework-bullet" placeholder="write something"></li>
+                                
+                            </ul>
+                        </div>
+                           
+                        <!-- <textarea type="text" name="experience" id="experience-detail" cols="97" rows="3" placeholder="Enter your experience details in form"></textarea> -->
 
                         </form>
 
@@ -170,7 +210,90 @@
 
             </div>
         </div>
+        
     </div>
+
+    {% comment %} To add new form under Skill section when add button is clicked {% endcomment %}
+    <script>
+        // Function to add a new form
+        function addskillForm() {
+          // Create a new form element
+          var form = document.createElement('form');
+          form.className = 'skills';
+          form.id = 'skill-form-1'
+
+          //create a new div
+          var div = document.createElement('div');
+          div.className = 'skill-input-div'
+    
+          // Create input elements
+          var categoryInput = document.createElement('input');
+          categoryInput.type = 'text';
+          categoryInput.name = 'skill_category_name';
+          categoryInput.id = 'skill_category_id';
+          categoryInput.className = 'skill_input_category'
+
+          categoryInput.placeholder = "Category";
+          
+          var colon = document.createElement('p');
+          colon.textContent=':'
+          
+          var skillInput = document.createElement('input');
+          skillInput.type = 'text';
+          skillInput.name = 'skill_skills_name';
+          skillInput.id = 'skill_skills_id';
+          skillInput.className = 'skill_input'
+
+          skillInput.placeholder = "Skills";
+          // Append the input elements to the div
+          div.appendChild(categoryInput);
+          div.appendChild(colon);
+          div.appendChild(skillInput);
+    
+      
+          form.appendChild(div);
+    
+          // Append the new form to the container
+          var container = document.getElementById('formContainer-skills');
+          container.appendChild(form);
+        //   container.appendChild(lineBreak);
+        }
+    
+        // Attach event listener to the "Add" button
+        var addButton = document.getElementById('add-skills');
+        addButton.addEventListener('click', addskillForm);
+      </script>
+
+{% comment %} To add new bulletpoint under Experience Role section when add button is clicked {% endcomment %}
+<script>
+    // Function to add a new form
+    // Get the button element
+var addButton = document.getElementById("add-experience-roles");
+
+// Get the UL element
+var ulExpRoles = document.getElementById("ul-exp-roles");
+
+// Add event listener to the button
+addButton.addEventListener("click", function () {
+    // Create a new LI element
+    var newLi = document.createElement("li");
+
+    // Create a new input element
+    var newInput = document.createElement("input");
+    newInput.type = "text";
+    newInput.name = "roles-bullet";
+    newInput.id = "roles-bullet";
+    newInput.className = "coursework-bullet";
+    newInput.placeholder = "write something";
+
+    // Append the input element to the LI
+    newLi.appendChild(newInput);
+
+    // Append the LI to the UL
+    ulExpRoles.appendChild(newLi);
+});
+
+  </script>
 
 
     {% comment %} To add new form under Education section when add button is clicked {% endcomment %}
@@ -191,7 +314,7 @@
           degreeInput.type = 'text';
           degreeInput.name = 'degree';
           degreeInput.id = 'degree';
-          degreeInput.placeholder = 'Enter Your Degree';
+          degreeInput.placeholder = "Enter Your Program's Name";
     
           var durationInput = document.createElement('input');
           durationInput.type = 'text';
@@ -208,13 +331,40 @@
           universityInput.name = 'university';
           universityInput.id = 'university';
           universityInput.placeholder = 'Enter Your University Name, City, Country';
+
+          var gpaInput = document.createElement('input');
+          gpaInput.type = 'text';
+          gpaInput.name = 'gpa';
+          gpaInput.id = 'gpa';
+          gpaInput.className = 'gpa'
+          gpaInput.placeholder = 'GPA';
+
+          var courseLabel = document.createElement('label');
+          courseLabel.id = 'coursework-label';
+          courseLabel.className = 'coursework-label';
+          courseLabel.textContent = 'Relevent Coursework:'
+
+          var create_ul = document.createElement('ul');
+          create_ul.className = 'ul-bullet-course';
+
+          var create_li = document.createElement('li');
+
+          var course_bullet_Input = document.createElement('input');
+          course_bullet_Input.type = 'text';
+          course_bullet_Input.name = 'coursework-bullet';
+          course_bullet_Input.id = 'coursework-bullet';
+          course_bullet_Input.className = 'coursework-bullet'
+          course_bullet_Input.placeholder = 'write something';
+          
+          create_li.appendChild(course_bullet_Input)
+          create_ul.appendChild(create_li)
     
-          var educationTextArea = document.createElement('textarea');
-          educationTextArea.name = 'education';
-          educationTextArea.id = 'education-detail';
-          educationTextArea.cols = '97';
-          educationTextArea.rows = '3';
-          educationTextArea.placeholder = 'Enter your education details in form';
+        //   var educationTextArea = document.createElement('textarea');
+        //   educationTextArea.name = 'education';
+        //   educationTextArea.id = 'education-detail';
+        //   educationTextArea.cols = '97';
+        //   educationTextArea.rows = '3';
+        //   educationTextArea.placeholder = 'Enter your education details in form';
           
           // Create a new line break element
           var lineBreak = document.createElement('br');
@@ -222,7 +372,9 @@
           // Append the input elements to the form
           form.appendChild(div);
           form.appendChild(universityInput);
-          form.appendChild(educationTextArea);
+          form.appendChild(gpaInput);
+          form.appendChild(courseLabel);
+          form.appendChild(create_ul);
     
           // Append the new form to the container
           var container = document.getElementById('formContainer');
@@ -426,6 +578,11 @@
 
 
  <script>
+    function removeFormSkill() {
+      var form = document.getElementById('skill-form-1');
+      form.remove();
+    }
+
     function removeForm() {
       var form = document.getElementById('education-form-1');
       form.remove();
@@ -446,6 +603,7 @@
       form.remove();
     }
   </script>
+
 
     
 </body>

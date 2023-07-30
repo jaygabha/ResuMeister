@@ -3,3 +3,4 @@ ParsingApp/flask_venv/*
 .idea/*
 ../.DS_Store
 .DS_Store
+db.sqlite3
