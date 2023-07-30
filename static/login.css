@@ -1,0 +1,136 @@
+body{
+    
+    margin: 0px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.main-sepration{
+    display: flex;
+    flex-direction: row;
+}
+.title-half{
+    text-align: center;
+    background-color: #1B515A;
+    width: 50vw;
+    height: 100vh;
+    color: white;
+    position: absolute;
+   
+
+}
+
+#resume-image{
+    width: 35vw;
+    height: 50vh;
+    margin-top: 10vh;
+    
+}
+
+.login-half{
+    text-align: center;
+    background-color: #FEBA33;
+    width: 50vw;
+    height: 100vh;
+    position: absolute;
+    right: 0px;
+}
+
+
+
+.title-content{
+ display: flex;
+ flex-direction: column;
+}
+
+#name-title{
+    font-size: 3rem;
+    margin-top: 10vh;
+    margin-bottom: 0px;
+}
+
+.login-half{
+   display: flex;
+   justify-content: center;
+   
+}
+ .login-box{
+    height: 50vh;
+    width: 30vw;
+    background-color: white;
+    margin: auto;
+    border-radius: 2rem;
+    box-shadow: 0 1.3rem 4px rgba(0, 0, 0, 0.2); 
+
+}
+
+/* .login-form-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 5vh;
+} */ */
+
+
+/* .login-box {
+    width: 300px;
+    margin: 0 auto;
+    padding: 1.3rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f5f5f5;
+  } */
+  
+.login-title {
+    text-align: center;
+    margin-bottom: 1.3rem;
+  }
+  
+.login-title h1 {
+    color: #333;
+    font-size: 1.875rem;
+  }
+  
+.login-form-content {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem;
+    font-size: 1.3rem;
+  }
+  
+.login-form-content label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+.login-form-content input[type="email"],
+.login-form-content input[type="password"] {
+    padding: 0.6rem;
+    margin-bottom: 0.6rem;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+  }
+  
+.login-form-content input[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    padding: 0.6rem;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin: auto;
+    font-size: 1rem;
+  }
+  
+.login-form-content input[type="submit"]:hover {
+    background-color: #555;
+}
+
+#email, #pass{
+    font-size: 0.8em;
+}
+#register{
+    margin-top: 2rem;
+    font-size: 1rem;
+    color: blue;
+    text-decoration: none;
+}

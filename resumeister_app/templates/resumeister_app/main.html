@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResuMeister</title>
+</head>
+<link rel="stylesheet" href="../../../static/main.css">
+<link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+<body>
+    <div class="upper-nav">
+           
+        <h1>ResuMeister</h1>
+        <div class="buttons-sec">
+            {% comment %} <input type="submit" value="Log Out" onclick = "location.href = 'login.html'" id="logout">  {% endcomment %}
+            <input type="submit" value="Log Out" onclick = 'location.href = "/login"' id="logout">
+            
+        
+        </div>
+    </div>
+    <div class="main-body">
+        <div class="level1">
+            <div class="left-sec">
+        <h1>Craft a perfect resume now.</h1>
+        <input type="submit" value="Create New" onclick = 'location.href = "createResume"' id="CreateNewbtn"> 
+    </div>
+        <img src="static/images/mainImage.svg" alt="Hello" id="image1">
+    </div>
+
+    <div class="level2">
+        <h1>
+            Resumes
+        </h1>
+           <div class="level3">
+
+            <div class="resume-card">
+                <img src="/static/images/resume.svg" alt="Avatar" id="resume-image"></image>
+                <div class="container">
+                  <h4><b>Resume 1</b></h4> 
+                  <p>Created on: 20/07/2023</p>
+                  <div class="card-button">
+                    <input type="submit" value="Edit" onclick = 'location.href = "login.html"' id="editbtn"> 
+                    <input type="submit" value="Delete" onclick = 'deleteCard(this.parentNode.parentNode.parentNode)' id="deletebtn">
+                  </div>
+                </div>
+            </div>
+
+            <div class="resume-card">
+                <img src="/static/images/resume.svg" alt="Avatar" id="resume-image"></image>
+                <div class="container">
+                  <h4><b>Resume 2</b></h4> 
+                  <p>Created on: 20/07/2023</p>
+                  <div class="card-button">
+                    <input type="submit" value="Edit" onclick = 'location.href = "login.html"' id="editbtn"> 
+                    <input type="submit" value="Delete" onclick = 'deleteCard(this.parentNode.parentNode.parentNode)' id="deletebtn">
+                  </div>
+                </div>
+            </div>
+
+            <div class="resume-card">
+                <img src="/static/images/resume.svg" alt="Avatar" id="resume-image"></image>
+                <div class="container">
+                  <h4><b>Resume 3</b></h4> 
+                  <p>Created on: 20/07/2023</p>
+                  <div class="card-button">
+                    <input type="submit" value="Edit" onclick = 'location.href = "login.html"' id="editbtn"> 
+                    <input type="submit" value="Delete" onclick = 'deleteCard(this.parentNode.parentNode.parentNode)' id="deletebtn">
+                  </div>
+                </div>
+            </div>
+
+           </div>
+           
+
+             <!-- <div class="card1">
+            <div class="card1-left">
+                <h2>Resume 1</h2>
+                <p>Created on: 20/07/2023</p>
+                <input type="submit" value="Edit" onclick = 'location.href = "login.html"' id="editbtn"> 
+                <input type="submit" value="Delete" onclick = 'deleteCard(this.parentNode.parentNode)' id="deletebtn">
+            </div>
+            
+        </div> -->
+        <!-- <div class="card1">
+            <div class="card1-left">
+                <h2>Resume 2</h2>
+                <p>Created on: 20/07/2023</p>
+                <input type="submit" value="Edit" onclick = 'location.href = "login.html"' id="editbtn"> 
+                <input type="submit" value="Delete" onclick = 'deleteCard(this.parentNode.parentNode)' id="deletebtn">
+            </div>
+           
+        </div> -->
+
+
+           
+
+           
+        
+    </div>
+    
+        
+    
+    </div>
+    </div>
+    <script>
+        function deleteCard(card) {
+            card.remove();
+        }
+        </script>
+</body>
+</html>

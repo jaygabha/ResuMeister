@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResuMeister</title>
+    <link rel="stylesheet" href="../../../static/login.css">
+    <link rel="icon" type="image/x-icon" href="../../../static/images/favicon.ico">
+</head>
+<body>
+    <div class="main-sepration">
+        <div class="title-half">
+            <div class="title-content"></div>
+            <h1 id="name-title">ResuMeister</h1>
+            <h2><i>"Building Careers One Resume at a Time."</i></h2>
+            <image src="/static/images/homeimage.svg" alt="resume" id="resume-image"></image>
+        </div>
+
+        <div class="login-half">
+            <div class="login-box">
+                <div class="login-title">
+                    <h1>Login</h1>
+                </div>
+                <div class="login-form">
+                    <form class="login-form-content" action="login" method="POST">
+                    {% csrf_token %}
+                        <!-- <label for="email">Email</label> -->
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                        <br>
+                        <!-- <label for="pass">Password</label> -->
+                        <input type="password" id="pass" name="pass" placeholder="Enter your password" required>
+
+                        {% if msg %}
+                            <p>{{msg}}</p>
+                        {% else %}
+                            <br>
+                        {% endif %}
+                        <input type="submit" value="Submit" onclick = 'location.href = "/main"'>
+                    </form>
+                    <h4>Don't have an account yet? <a href="register" id="register" >Click Here</a> to register</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../../../static/login.js"></script>
+</body>
+</html>

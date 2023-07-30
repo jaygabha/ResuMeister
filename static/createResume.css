@@ -1,0 +1,517 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap');
+body{
+    padding: 0px;
+    margin: 0px;
+    background-color: #FEBA33;
+    font-family: 'Rubik', sans-serif;
+}
+.upper-nav{
+    background-color:#18454e;
+    width: 100vw;
+    height: 10vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    position: fixed;
+    color:#fff;
+}
+.upper-nav h1{
+    font-size: 2rem;
+    
+}
+.buttons-sec{
+    margin-top: 1rem;
+    
+}
+#logout{
+    background-color: #fff;
+    color: black;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-left: 2rem;
+    font-size: 1rem;
+  }
+
+.main-body{
+    margin-top: 5vh;
+    display: flex;
+    flex-direction:column;
+    text-align: center;
+    align-items: center;
+    
+}
+
+.input-card{
+    width: 60vw;
+    height: 280vh;
+    background-color: #fff;
+    border-radius: 10px;
+    margin-top: 5vh;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    color:black;
+    
+    
+}
+
+.sec-form{
+    border: 2px solid #18454e;
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    outline: none;
+    border: none;
+    
+   
+}
+.header-part{
+display: flex;
+flex-direction: row;
+}
+.header-inputs1{
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+}
+
+.header-inputs2{
+    display: flex;
+    flex-direction: column;
+    margin-left: 5rem;
+    width: 20vw;
+   
+    
+}
+#name{
+    width: 30vw;
+    height: 5vh;
+    outline: none;
+    font-size: 1.5rem;
+    padding-left: 1rem;
+    font-weight: bold;
+    outline: none;
+    border: none;
+    
+}
+#linkedIn
+{
+    padding-left: 1rem;
+    border: none;
+    outline: none;
+
+}
+#address, #email, #github, #phone{
+    border: none;
+    outline: none;
+    padding-left: 1rem;
+}
+.body-part{
+    margin-top: 0rem;
+}
+.body-part1{
+    display: flex;
+    flex-direction: row;
+}
+textarea {
+    resize: none;
+  }
+.summary{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.skills{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.edu-head{
+    display: flex;
+    flex-direction: row;
+    
+
+}
+.skill-head{
+    display: flex;
+    flex-direction: row;
+    
+
+}
+.edu-btns{
+   margin-left: 80%;
+   display: flex;
+   flex-direction: row;
+}
+.skill-btns{
+   margin-left: 84%;
+   display: flex;
+   flex-direction: row;
+}
+.exp-head{
+    display: flex;
+    flex-direction: row;
+    
+
+}
+.exp-btns{
+   margin-left: 80%;
+   display: flex;
+   flex-direction: row;
+}
+
+.pro-head{
+    display: flex;
+    flex-direction: row;
+    
+
+}
+.pro-btns{
+   margin-left: 80%;
+   display: flex;
+   flex-direction: row;
+}
+
+.cer-head{
+    display: flex;
+    flex-direction: row;
+    
+
+}
+.cer-btns{
+   margin-left: 80%;
+   display: flex;
+   flex-direction: row;
+}
+
+#add-skills{
+    outline: none;
+    border: none;
+    background-color: #fff;
+}
+#add-skills:active,#delete:active{
+    font-size: 1rem;
+    background-color: #18454e;
+    color: #fff;
+}
+#add{
+    outline: none;
+    border: none;
+    background-color: #fff;
+}
+#add:active,#delete:active{
+    font-size: 1rem;
+    background-color: #18454e;
+    color: #fff;
+}
+
+#add-experience{
+    outline: none;
+    border: none;
+    background-color: #fff;
+}
+
+#add-experience:active,#delete:active{
+    font-size: 1rem;
+    background-color: #18454e;
+    color: #fff;
+}
+
+#add-experience-roles{
+    outline: none;
+    border: none;
+    background-color: #fff;
+}
+
+#add-experience-roles:active,#delete:active{
+    font-size: 1rem;
+    background-color: #18454e;
+    color: #fff;
+}
+
+#add-certifications{
+    outline: none;
+    border: none;
+    background-color: #fff;
+}
+#add-certifications:active,#delete:active{
+    font-size: 1rem;
+    background-color: #18454e;
+    color: #fff;
+}
+
+#add-project{
+    outline: none;
+    border: none;
+    background-color: #fff;
+}
+#add-project:active,#delete:active{
+    font-size: 1rem;
+    background-color: #18454e;
+    color: #fff;
+}
+
+#delete{
+    outline: none;
+    border: none;
+    background-color: #fff;
+}
+.education-1{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.education-2{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+#Subhead{
+    padding-right: 100%;
+    margin-bottom:0rem;
+    padding-left: 1rem;
+    outline: none;
+    border: none;
+    
+}
+#duration{
+    outline: none;
+    border: none;
+}
+
+#summary-detail{
+    margin-top: 0rem;
+    padding-left: 1rem;
+    outline: none;
+    border: none;
+    
+}
+#skills-detail{
+    margin-top: 0rem;
+    padding-left: 1rem;
+    outline: none;
+    border: none;
+    
+}
+#education-detail{
+    margin-top: 0rem;
+    padding-left: 1rem;
+    
+    outline: none;
+    border: none;
+}
+
+#degree{
+font-weight: bold;
+padding-left: 1rem;
+width: 50%;
+outline: none;
+border: none;
+}
+#university{
+    padding-left: 1rem;
+    font-style: italic;
+    width: 50%;
+    outline: none;
+    border: none;
+}
+.courework-head{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-evenly;
+    margin-left: 1rem;
+}
+/* #gpa{
+    padding-left: 1rem;
+    font-style: italic;
+    width: 50%;
+    outline: none;
+    border: none;
+} */
+
+.gpa{
+    padding-left: 1rem;
+    font-style: italic;
+    width: 50%;
+    outline: none;
+    border: none;
+}
+
+.skill-input-div{
+   display: flex;
+   flex-direction: row;
+   justify-content: flex-start;
+}
+.skill_input_category{
+    padding-left: 1rem;
+    font-style: italic;
+    outline: none;
+    border: none;
+    font-weight: bold;
+   
+}
+.skill_input{
+    padding-left: 1rem;
+    font-style: italic;
+    width: 70%;
+    outline: none;
+    border: none;
+}
+
+/* #coursework-label{
+    text-align: left; font-size: small; margin-left: 1rem; margin-top: 10px;
+} */
+.coursework-label{
+    text-align: left; font-size: small; margin-left: 1rem; margin-top: 10px;
+}
+
+.ul-bullet-course{
+    margin-top: 0;
+}
+
+.coursework-bullet{
+    padding-left: 1rem;
+    font-style: italic;
+    outline: none;
+    border: none;
+    text-align: left; 
+    width: 100%;
+}
+
+.experience-role-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.degree-duration{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.project-duration{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.projects-1{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.projects-2{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.projects-3{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.certification-1{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.certification-2{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.certification-3{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#project{
+    font-weight: bold;
+    padding-left: 1rem;
+    width: 40%;
+    outline: none;
+    border: none;
+}
+
+#certification{
+    font-weight: bold;
+    padding-left: 1rem;
+    width: 40%;
+    outline: none;
+    border: none;
+}
+
+#organisation{
+    padding-left: 1rem;
+    font-style: italic;
+    width: 40%;
+    outline: none;
+    border: none;
+}
+
+#organisation-project{
+    padding-left: 1rem;
+    font-style: italic;
+    width: 40%;
+    outline: none;
+    border: none;
+    margin-left: 0;
+}
+#project-detail{
+    margin-top: 0rem;
+    padding-left: 1rem;
+    outline: none;
+    border: none;
+}
+#experience-detail{
+    margin-top: 0rem;
+    padding-left: 1rem;
+    outline: none;
+    border: none;
+}
+
+#certification-detail{
+    margin-top: 0rem;
+    padding-left: 1rem;
+    outline: none;
+    border: none;
+}
+
+.experience-duration{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+#experience-detail{
+    margin-top: 0rem;
+    padding-left: 1rem;
+    
+    outline: none;
+    border: none;
+}
+.experience-1{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.experience-2{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.experience-3{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#experience{
+    font-weight: bold;
+    padding-left: 1rem;
+    width: 40%;
+    outline: none;
+    border: none;
+}

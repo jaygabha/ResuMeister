@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResuMeister</title>
+    <link rel="stylesheet" href="../../../static/createResume.css">
+    <link rel="icon" type="image/x-icon" href="../../../static/images/favicon.ico">
+    
+</head>
+<body>
+    <div class="upper-nav">
+           
+        <h1>ResuMeister</h1>
+        <div class="buttons-sec">
+            <input type="submit" value="Log Out" onclick = 'location.href = "/login"' id="logout"> 
+        </div>
+    </div>
+    <br>
+    <div class="main-body">
+        <h1>Let's build your resume</h1>
+     <div id ='resume-card-full' class="input-card">    <!--  This is where the resume will be built -->
+            <div class="sec-form">
+                <div class="header-part">
+                <form class="header-inputs1">
+                    <input type="text" name="Name" id="name" placeholder="Enter Your Full Name">
+                    <input type="text" name="linkedIn" id="linkedIn" placeholder="LinkedIn Username">
+                </form>
+                <form class="header-inputs2">
+                    <input type="address" name="address" id="address" placeholder="Enter Your Address">
+                    <input type="email" name="email" id="email" placeholder="Enter Your Email ID">
+                    <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" placeholder="Enter Your Phone Number">
+                    <input type="link" name="github" id="github" placeholder="Enter Your Github ID (optional)">
+                </form>
+            </div>
+            <br>
+            <div class="body-part">
+                <div class="body-part1">
+                    <div class="summary">
+                        
+                    <h4 id="Subhead">Profile</h4>
+                    <hr style="width:100%;text-align:left;margin-left:0; border-style: inset;">
+                    <form class="summary">
+                        <textarea type="text" name="summary" id="summary-detail" cols="97" rows="5" placeholder="Enter Your Profile Summary (500 char max)" maxlength="500"></textarea>
+                    </form>
+                    </div>
+                </div>
+                <div class="body-part2">
+                    <div class="skills">
+                    <div class="skill-head">
+                        <div class="title-edu">
+                            <h4 id="Subhead">Skills</h4>
+                        </div>
+                        <div class="skill-btns">
+                            <button id="add-skills">+</button>
+                            <button id="delete" onclick="removeFormSkill()">-</button>
+                        </div>
+                    </div>
+                    <!-- <h4 id="Subhead">Skills</h4> -->
+                    <hr style="width:100%;text-align:left;margin-left:0; border-style: inset;">
+                    <div id = 'formContainer-skills'>
+                    <form class="skills">
+                        <!-- <textarea type="text" name="skills" id="skills-detail" cols="97" rows="5" placeholder="Enter your skills in form or bullets."></textarea> -->
+                        <div class="skill-input-div">
+                            <input type="text" id="skill_category_id" name="skill_category_name" class="skill_input_category" placeholder="Category">
+                            <p>:</p>
+                            <input type="text" id="skill_skils_id" name="skill_skils_name" class="skill_input" placeholder="Skills">
+                        </div>
+                        
+                    </form>
+                    </div>
+                    </div>
+                </div>
+                <div class="body-part3">
+                    <div class="Education">
+                     <div class="edu-head">
+                        <div class="title-edu">
+                    <h4 id="Subhead">Education</h4>
+                </div>
+                {% comment %} Buttons to add and remove new Education sections  {% endcomment %}
+                    <div class="edu-btns">
+                        <button id="add">+</button>
+                        <button id="delete" onclick="removeForm()">-</button>
+                    </div>
+                    </div> 
+                    <hr style="width:100%;text-align:left;margin-left:0; border-style: inset;">
+                    <div id = 'formContainer'>
+                        <form class="education-1">
+                            <div class="degree-duration">
+                            <input type="text" name="degree" id="degree" placeholder="Enter Your Program's Name">
+                            <input type="text" name="duration" id="duration" placeholder="Enter Duration">
+                            </div>
+                            <input type="text" name="university" id="university" placeholder="Enter Your University Name, City, Country">
+                            <input type="text" name="gpa" class="gpa" placeholder="GPA">
+                           
+                            <label id="coursework-label" class="coursework-label">Relevent CourseWork:</label>
+                            <ul class="ul-bullet-course">
+                                <li><input type="text" name="coursework-bullet" id="coursework-bullet"  class="coursework-bullet" placeholder="write something"></li>
+                                
+                            </ul>
+                            <!-- <textarea type="text" name="education" id="education-detail" cols="97" rows="3" placeholder="Enter your education details in form" ></textarea> -->
+                            
+                        </form>
+{#                        <br>#}
+                        
+                    </div> 
+                    </div>
+                </div>
+                <div class="body-part4">
+                    <div class="Work Experience">
+                        
+                        <div class="exp-head">
+                            <div class="title-exp">
+                        <h4 id="Subhead">Experience</h4>
+                    </div>
+                        <div class="exp-btns">
+                            <button id="add-experience">+</button>
+                            <button id="delete" onclick="removeFormExperience()">-</button>
+                        </div>
+                        </div> 
+                    <hr style="width:100%;text-align:left;margin-left:0; border-style: inset;">
+                    <div id = 'form-container-experience'>
+                        <form class="experience-1">
+                        <div class="experience-duration">
+                        <input type="text" name="experience" id="experience" placeholder="Enter Your Position">
+                        <input type="text" name="duration" id="duration" placeholder="Enter Duration">
+                        </div>
+                        <input type="text" name="organisation" id="organisation" placeholder="Enter Your Organisation Name, City, Country">
+                        <div class="experience-role-div">
+                            <div>
+                                <h5 id="Subhead" >Roles:</h5>
+                            </div>                            
+                            <div class="exp-btns">
+                                <button id="add-experience-roles">+</button>
+                                <button id="delete" onclick="removeFormExperience()">-</button>
+                            </div>
+                        </div>
+                        <div id="form-container-roles">
+                            <ul id="ul-exp-roles" class="ul-bullet-course">
+                                <li><input type="text" name="roles-bullet" id="roles-bullet"  class="coursework-bullet" placeholder="write something"></li>
+                                
+                            </ul>
+                        </div>
+                           
+                        <!-- <textarea type="text" name="experience" id="experience-detail" cols="97" rows="3" placeholder="Enter your experience details in form"></textarea> -->
+
+                        </form>
+
+                    </div>
+                    </div>
+                </div>
+                <div class="body-part5">
+                    <div class="Projects">
+                        <div class="pro-head">
+                            <div class="title-pro">
+                        <h4 id="Subhead">Projects</h4>
+                    </div>
+                        <div class="pro-btns">
+                            <button id="add-project">+</button>
+                            <button id="delete" onclick="removeFormProject()">-</button>
+                        </div>
+                        </div>     
+                    
+                    <hr style="width:100%;text-align:left;margin-left:0; border-style: inset;">
+                    <div id = "form-container-project">
+                        <form class="projects-1">
+                        <div class="project-duration">
+                        <input type="text" name="project" id="project" placeholder="Enter Your Project Name">
+                        <input type="text" name="duration" id="duration" placeholder="Enter Duration">
+                        </div>
+                        <input type="text" name="organisation" id="organisation-project" placeholder="Enter Your Organisation Name, City, Country">
+                        <textarea type="text" name="project" id="project-detail" cols="97" rows="3" placeholder="Enter your project details in form"></textarea>
+
+                        </form>
+                    </div>
+
+
+                    </div>
+                </div>
+                <div class="body-part6">
+                    <div class="Certificates">
+                        <div class="cer-head">
+                            <div class="title-cer">
+                        <h4 id="Subhead">Certifications</h4>
+                    </div>
+                        <div class="cer-btns">
+                            <button id="add-certifications">+</button>
+                            <button id="delete" onclick="removeFormCertification()">-</button>
+                        </div>
+                        </div>     
+                    
+                    <hr style="width:100%;text-align:left;margin-left:0; border-style: inset;">
+                        <div id = 'form-container-certifications'>
+                            <form class="certification-1">
+                                <div class="project-duration">
+                                    <input type="text" name="certification" id="certification" placeholder="Certification Name">
+                                    <input type="text" name="duration" id="duration" placeholder="Enter Duration">
+                                </div>
+                                <input type="text" name="organisation" id="organisation" placeholder="Issuing organisation">
+                                <textarea type="text" name="certification" id="certification-detail" cols="97" rows="3" placeholder="Enter your certificate details in form"></textarea>
+
+                            </form>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            
+
+            </div>
+        </div>
+        
+    </div>
+
+    {% comment %} To add new form under Skill section when add button is clicked {% endcomment %}
+    <script>
+        // Function to add a new form
+        function addskillForm() {
+          // Create a new form element
+          var form = document.createElement('form');
+          form.className = 'skills';
+          form.id = 'skill-form-1'
+
+          //create a new div
+          var div = document.createElement('div');
+          div.className = 'skill-input-div'
+    
+          // Create input elements
+          var categoryInput = document.createElement('input');
+          categoryInput.type = 'text';
+          categoryInput.name = 'skill_category_name';
+          categoryInput.id = 'skill_category_id';
+          categoryInput.className = 'skill_input_category'
+
+          categoryInput.placeholder = "Category";
+          
+          var colon = document.createElement('p');
+          colon.textContent=':'
+          
+          var skillInput = document.createElement('input');
+          skillInput.type = 'text';
+          skillInput.name = 'skill_skills_name';
+          skillInput.id = 'skill_skills_id';
+          skillInput.className = 'skill_input'
+
+          skillInput.placeholder = "Skills";
+          // Append the input elements to the div
+          div.appendChild(categoryInput);
+          div.appendChild(colon);
+          div.appendChild(skillInput);
+    
+      
+          form.appendChild(div);
+    
+          // Append the new form to the container
+          var container = document.getElementById('formContainer-skills');
+          container.appendChild(form);
+        //   container.appendChild(lineBreak);
+        }
+    
+        // Attach event listener to the "Add" button
+        var addButton = document.getElementById('add-skills');
+        addButton.addEventListener('click', addskillForm);
+      </script>
+
+{% comment %} To add new bulletpoint under Experience Role section when add button is clicked {% endcomment %}
+<script>
+    // Function to add a new form
+    // Get the button element
+var addButton = document.getElementById("add-experience-roles");
+
+// Get the UL element
+var ulExpRoles = document.getElementById("ul-exp-roles");
+
+// Add event listener to the button
+addButton.addEventListener("click", function () {
+    // Create a new LI element
+    var newLi = document.createElement("li");
+
+    // Create a new input element
+    var newInput = document.createElement("input");
+    newInput.type = "text";
+    newInput.name = "roles-bullet";
+    newInput.id = "roles-bullet";
+    newInput.className = "coursework-bullet";
+    newInput.placeholder = "write something";
+
+    // Append the input element to the LI
+    newLi.appendChild(newInput);
+
+    // Append the LI to the UL
+    ulExpRoles.appendChild(newLi);
+});
+
+  </script>
+
+
+    {% comment %} To add new form under Education section when add button is clicked {% endcomment %}
+    <script>
+        // Function to add a new form
+        function addForm() {
+          // Create a new form element
+          var form = document.createElement('form');
+          form.className = 'education-1';
+          form.id = 'education-form-1'
+
+          //create a new div
+          var div = document.createElement('div');
+          div.className = 'degree-duration'
+    
+          // Create input elements
+          var degreeInput = document.createElement('input');
+          degreeInput.type = 'text';
+          degreeInput.name = 'degree';
+          degreeInput.id = 'degree';
+          degreeInput.placeholder = "Enter Your Program's Name";
+    
+          var durationInput = document.createElement('input');
+          durationInput.type = 'text';
+          durationInput.name = 'duration';
+          durationInput.id = 'duration';
+          durationInput.placeholder = 'Enter Duration';
+
+          // Append the input elements to the div
+          div.appendChild(degreeInput);
+          div.appendChild(durationInput);
+    
+          var universityInput = document.createElement('input');
+          universityInput.type = 'text';
+          universityInput.name = 'university';
+          universityInput.id = 'university';
+          universityInput.placeholder = 'Enter Your University Name, City, Country';
+
+          var gpaInput = document.createElement('input');
+          gpaInput.type = 'text';
+          gpaInput.name = 'gpa';
+          gpaInput.id = 'gpa';
+          gpaInput.className = 'gpa'
+          gpaInput.placeholder = 'GPA';
+
+          var courseLabel = document.createElement('label');
+          courseLabel.id = 'coursework-label';
+          courseLabel.className = 'coursework-label';
+          courseLabel.textContent = 'Relevent Coursework:'
+
+          var create_ul = document.createElement('ul');
+          create_ul.className = 'ul-bullet-course';
+
+          var create_li = document.createElement('li');
+
+          var course_bullet_Input = document.createElement('input');
+          course_bullet_Input.type = 'text';
+          course_bullet_Input.name = 'coursework-bullet';
+          course_bullet_Input.id = 'coursework-bullet';
+          course_bullet_Input.className = 'coursework-bullet'
+          course_bullet_Input.placeholder = 'write something';
+          
+          create_li.appendChild(course_bullet_Input)
+          create_ul.appendChild(create_li)
+    
+        //   var educationTextArea = document.createElement('textarea');
+        //   educationTextArea.name = 'education';
+        //   educationTextArea.id = 'education-detail';
+        //   educationTextArea.cols = '97';
+        //   educationTextArea.rows = '3';
+        //   educationTextArea.placeholder = 'Enter your education details in form';
+          
+          // Create a new line break element
+          var lineBreak = document.createElement('br');
+
+          // Append the input elements to the form
+          form.appendChild(div);
+          form.appendChild(universityInput);
+          form.appendChild(gpaInput);
+          form.appendChild(courseLabel);
+          form.appendChild(create_ul);
+    
+          // Append the new form to the container
+          var container = document.getElementById('formContainer');
+          container.appendChild(form);
+        //   container.appendChild(lineBreak);
+        }
+    
+        // Attach event listener to the "Add" button
+        var addButton = document.getElementById('add');
+        addButton.addEventListener('click', addForm);
+      </script>
+
+{% comment %} To add new form under Experience section when add button is clicked {% endcomment %}
+<script>
+    // Function to add a new form
+    function addFormExperience() {
+      // Create a new form element
+      var form = document.createElement('form');
+      form.className = 'experience-1';
+      form.id = 'experience-form-1'
+
+      //create a new div
+      var div = document.createElement('div');
+      div.className = 'experience-duration'
+
+      // Create input elements
+      var experienceInput = document.createElement('input');
+      experienceInput.type = 'text';
+      experienceInput.name = 'experience';
+      experienceInput.id = 'experience';
+      experienceInput.placeholder = 'Enter Your Postion';
+
+      var durationInput = document.createElement('input');
+      durationInput.type = 'text';
+      durationInput.name = 'duration';
+      durationInput.id = 'duration';
+      durationInput.placeholder = 'Enter Duration';
+
+      // Append the input elements to the div
+      div.appendChild(experienceInput);
+      div.appendChild(durationInput);
+
+      var organisationInput = document.createElement('input');
+      organisationInput.type = 'text';
+      organisationInput.name = 'organisation';
+      organisationInput.id = 'organisation';
+      organisationInput.placeholder = 'Enter Your organisation Name, City, Country';
+
+      var experienceTextArea = document.createElement('textarea');
+      experienceTextArea.name = 'experience';
+      experienceTextArea.id = 'experience-detail';
+      experienceTextArea.cols = '97';
+      experienceTextArea.rows = '3';
+      experienceTextArea.placeholder = 'Enter your experience details in form';
+      
+      // Create a new line break element
+      var lineBreak = document.createElement('br');
+
+      // Append the input elements to the form
+      form.appendChild(div);
+      form.appendChild(organisationInput);
+      form.appendChild(experienceTextArea);
+
+      // Append the new form to the container
+      var container = document.getElementById('form-container-experience');
+      container.appendChild(form);
+    //   container.appendChild(lineBreak);
+    }
+
+    // Attach event listener to the "Add" button
+    var addButton = document.getElementById('add-experience');
+    addButton.addEventListener('click', addFormExperience);
+  </script>
+
+
+{% comment %} To add new form under Projects section when add button is clicked {% endcomment %}
+<script>
+    // Function to add a new form
+    function addFormProject() {
+      // Create a new form element
+      var form = document.createElement('form');
+      form.className = 'projects-1';
+      form.id = 'project-form-1'
+
+      //create a new div
+      var div = document.createElement('div');
+      div.className = 'project-duration'
+
+      // Create input elements
+      var projectInput = document.createElement('input');
+      projectInput.type = 'text';
+      projectInput.name = 'project';
+      projectInput.id = 'project';
+      projectInput.placeholder = 'Enter Your Project Name';
+
+      var durationInput = document.createElement('input');
+      durationInput.type = 'text';
+      durationInput.name = 'duration';
+      durationInput.id = 'duration';
+      durationInput.placeholder = 'Enter Duration';
+
+      // Append the input elements to the div
+      div.appendChild(projectInput);
+      div.appendChild(durationInput);
+
+      var organisationInput = document.createElement('input');
+      organisationInput.type = 'text';
+      organisationInput.name = 'organisation';
+      organisationInput.id = 'organisation-project';
+      organisationInput.placeholder = 'Enter Your organisation Name, City, Country';
+
+      var projectTextArea = document.createElement('textarea');
+      projectTextArea.name = 'project';
+      projectTextArea.id = 'project-detail';
+      projectTextArea.cols = '97';
+      projectTextArea.rows = '3';
+      projectTextArea.placeholder = 'Enter your project details in form';
+      
+      // Create a new line break element
+      var lineBreak = document.createElement('br');
+
+      // Append the input elements to the form
+      form.appendChild(div);
+      form.appendChild(organisationInput);
+      form.appendChild(projectTextArea);
+
+      // Append the new form to the container
+      var container = document.getElementById('form-container-project');
+      container.appendChild(form);
+    //   container.appendChild(lineBreak);
+    }
+
+    // Attach event listener to the "Add" button
+    var addButton = document.getElementById('add-project');
+    addButton.addEventListener('click', addFormProject);
+  </script>
+
+
+{% comment %} To add new form under Certifications section when add button is clicked {% endcomment %}
+<script>
+    // Function to add a new form
+    function addFormCertifications() {
+      // Create a new form element
+      var form = document.createElement('form');
+      form.className = 'certification-1';
+      form.id = 'certification-form-1'
+
+      //create a new div
+      var div = document.createElement('div');
+      div.className = 'project-duration'
+
+      // Create input elements
+      var certificationInput = document.createElement('input');
+      certificationInput.type = 'text';
+      certificationInput.name = 'certification';
+      certificationInput.id = 'certification';
+      certificationInput.placeholder = 'Certification Name';
+
+      var durationInput = document.createElement('input');
+      durationInput.type = 'text';
+      durationInput.name = 'duration';
+      durationInput.id = 'duration';
+      durationInput.placeholder = 'Enter Duration';
+
+      // Append the input elements to the div
+      div.appendChild(certificationInput);
+      div.appendChild(durationInput);
+
+      var organisationInput = document.createElement('input');
+      organisationInput.type = 'text';
+      organisationInput.name = 'organisation';
+      organisationInput.id = 'organisation';
+      organisationInput.placeholder = 'Issuing organisation';
+
+      var certificationTextArea = document.createElement('textarea');
+      certificationTextArea.name = 'certification';
+      certificationTextArea.id = 'certification-detail';
+      certificationTextArea.cols = '97';
+      certificationTextArea.rows = '3';
+      certificationTextArea.placeholder = 'Enter your certificate details in form';
+      
+      // Create a new line break element
+      var lineBreak = document.createElement('br');
+
+      // Append the input elements to the form
+      form.appendChild(div);
+      form.appendChild(organisationInput);
+      form.appendChild(certificationTextArea);
+
+      // Append the new form to the container
+      var container = document.getElementById('form-container-certifications');
+      container.appendChild(form);
+    //   container.appendChild(lineBreak);
+    }
+
+    // Attach event listener to the "Add" button
+    var addButton = document.getElementById('add-certifications');
+    addButton.addEventListener('click', addFormCertifications);
+  </script>
+
+
+
+ <script>
+    function removeFormSkill() {
+      var form = document.getElementById('skill-form-1');
+      form.remove();
+    }
+
+    function removeForm() {
+      var form = document.getElementById('education-form-1');
+      form.remove();
+    }
+
+    function removeFormExperience() {
+      var form = document.getElementById('experience-form-1');
+      form.remove();
+    }
+
+    function removeFormProject() {
+      var form = document.getElementById('project-form-1');
+      form.remove();
+    }
+
+    function removeFormCertification() {
+      var form = document.getElementById('certification-form-1');
+      form.remove();
+    }
+  </script>
+
+
+    
+</body>
+</html>
