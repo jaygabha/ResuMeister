@@ -23,6 +23,7 @@ def parse_resume():
         extracted_fields["phone"] = data.get("phone")
         extracted_fields["linkedin"] = ""
         extracted_fields["github"] = ""
+        extracted_fields["summary"] = ""
         extracted_fields["education"] = []
         for i in range(0,len(data.get("university"))):
             uni_dict = {}
@@ -35,8 +36,8 @@ def parse_resume():
             uni_dict["grade"] = ""
             uni_dict["coursework"] = ""
             extracted_fields["education"].append(uni_dict)
-        
-        extracted_fields["skills"] = data.get("skills")
+        skill_section = {"category": "", "skills": data.get("skills")}
+        extracted_fields["skills"] = [skill_section]
         extracted_fields["experience"] = []
         for i in range(0, len(data.get("Companies worked at"))):
             exp_dict = {}
