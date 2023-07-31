@@ -184,7 +184,7 @@ class SaveResume(View):
             output_tex = "./ParsingApp/new_test/formatted_resume.tex"
             save_to_tex(tex_content, output_tex)
             convert_latex_to_pdf(output_tex)
-            output_file = "./resumeister_app/formatted_resume.pdf"
+            output_file = "formatted_resume.pdf"
             with open(output_file, "rb") as fprb:
                 response = HttpResponse(fprb.read(), content_type="pdf")
             response["Content-Disposition"] = "attachment; filename=" + title + ".pdf"
