@@ -440,3 +440,43 @@ function removeFormCertification() {
 //   var form = document.getElementById('certification-form-1');
 //   form.remove();
 }
+
+function parse_data(){
+    let parsed_string = document.cookie.split("parse_data=\"")[1]
+    parsed_string = parsed_string.replaceAll(/\\054/g, ',');
+    parsed_string = parsed_string.slice(0,-1)
+    parsed_string = parsed_string.replaceAll("\'", "\"");
+    console.log(parsed_string);
+    let data = JSON.parse(parsed_string);
+    console.log(data);
+    let header_form_1 = document.querySelector(".header-inputs1");
+    let name = header_form_1.querySelector("input[id='name']");
+    name.setAttribute('value', data["fullname"]);
+    let linkedin = header_form_1.querySelector("input[id='linkedIn']");
+    linkedin.setAttribute('value', data["linkedin"]);
+    let header_form_2 = document.querySelector(".header-inputs2");
+    let email = header_form_2.querySelector("input[id='email']");
+    email.setAttribute('value', data["email"]);
+    let phone = header_form_2.querySelector("input[id='phone']");
+    phone.setAttribute('value', data["phone"]);
+    let github = header_form_2.querySelector("input[id='github']");
+    github.setAttribute('value', data["github"]);
+    let summary = document.querySelector("textarea[id='summary-detail']")
+    summary.setAttribute('value', data["summary"])
+    var skills = []
+    skills = data["skills"];
+    for(let i=0;i<skills.length;i++){
+        let skill_form = document.querySelector(".skill_section_" + skill_section.toString())
+        let category = skill_form.querySelector("input[id='skill_category_id']");
+        category.setAttribute('value', skills[i]["category"]);
+        let skills_ele = skill_form.querySelector("input[id='skill_skils_id']");
+        skills_string = ""
+        for(let j=0;j<skills[i]["skills"].length;j++){
+            skills_string += skills[i]["skills"][j];
+            skills_string += ", ";
+        }
+        skills_ele.setAttribute('value', skills_string);
+        document.querySelector("button[id='add-skills']").click();
+    }
+}
+
