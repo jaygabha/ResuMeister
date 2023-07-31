@@ -533,7 +533,12 @@ function extract_data(){
         let skill_ele = skill_form.querySelector("input[id='skill_skils_id']") !== null
         if (skill_ele){
             let skills_list = skill_form.querySelector("input[id='skill_skils_id']").getAttribute('value');
-            skill["skills"] = skills_list.split(", ");
+            if(skills_list !== null) {
+                skill["skills"] = skills_list.split(", ");
+            }
+            else {
+                skill["skills"] = []
+            }
         }
         else {
             continue

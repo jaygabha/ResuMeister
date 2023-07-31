@@ -134,4 +134,6 @@ class SaveResume(View):
         print(extract_data)
         response = HttpResponse()
         response.write(extract_data)
+        response.delete_cookie("extract_data")
+        response.delete_cookie("parse_data")
         return response
