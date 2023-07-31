@@ -16,6 +16,7 @@ def parse_resume():
     # Get the data from the POST request.
     try:
         file_path = str(request.args.get("file_path"))
+        file_path = file_path.split("/")[-1]
         data = resumeparse.read_file(file_path)
         extracted_fields = {}
         extracted_fields["fullname"] = str(data.get("name")).title()

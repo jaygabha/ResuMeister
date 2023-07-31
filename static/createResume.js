@@ -552,5 +552,5 @@ function extract_data(){
     }
     console.log(extract)
     setCookie("extract_data", JSON.stringify(extract))
-    // window.location.assign("/saveResume")
+    window.location.assign("/saveResume")
 }
