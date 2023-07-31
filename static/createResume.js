@@ -480,3 +480,45 @@ function parse_data(){
     }
 }
 
+
+function extract_data(){
+    let extract = {}
+    let header_form_1 = document.querySelector(".header-inputs1");
+    let fullname = header_form_1.querySelector("input[id='name']").getAttribute('value');
+    let linkedin = header_form_1.querySelector("input[id='linkedIn']").getAttribute('value');
+    let header_form_2 = document.querySelector(".header-inputs2");
+    let email = header_form_2.querySelector("input[id='email']").getAttribute('value');
+    let phone = header_form_2.querySelector("input[id='phone']").getAttribute('value');
+    let github = header_form_2.querySelector("input[id='github']").getAttribute('value');
+    let summary = document.querySelector("textarea[id='summary-detail']").getAttribute('value');
+    extract["fullname"] = fullname
+    extract["linkedin"] = linkedin
+    extract["email"] = email
+    extract["phone"] = phone
+    extract["github"] = github
+    extract["summary"] = summary
+    extract["skills"] = []
+    for(let i=1;i<=skill_section;i++){
+        let skill = {}
+        let skill_form = document.querySelector(".skill_section_" + i.toString())
+        let category_ele = skill_form.querySelector("input[id='skill_category_id']") !== null
+        if(category_ele ){
+            skill["category"] = skill_form.querySelector("input[id='skill_category_id']").getAttribute('value');
+        }
+        else {
+            continue
+        }
+        // console.log(skill_form.querySelector("input[id='skill_skils_id']"))
+        let skill_ele = skill_form.querySelector("input[id='skill_skils_id']") !== null
+        if (skill_ele){
+            let skills_list = skill_form.querySelector("input[id='skill_skils_id']").getAttribute('value');
+            skill["skills"] = skills_list.split(", ");
+        }
+        else {
+            continue
+        }
+
+        extract["skills"].push(skill);
+    }
+    console.log(extract)
+}
