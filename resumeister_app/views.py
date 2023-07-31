@@ -1,3 +1,5 @@
+import json
+
 from django.shortcuts import render, redirect
 
 # Create your views here.
@@ -10,6 +12,9 @@ from django.views import View
 from .forms import UploadFileForm
 import requests
 from datetime import datetime
+from .latex_converter import format_to_tex, save_to_tex, convert_latex_to_pdf
+
+
 class HomePageView(View):
     def get(self, request):
         if request.session.has_key('email'):
@@ -164,21 +169,27 @@ def UploadResume(request, title):
         return response
 
 
-
 class SaveResume(View):
     def get(self, request):
         if request.session.has_key('email'):
             extract_data = request.COOKIES.get("extract_data")
             title = request.COOKIES.get("title")
             print(extract_data)
-            response = HttpResponse()
-            response.write(extract_data)
+            resume_data = json.loads(extract_data)
+            print(resume_data)
+            set_dict = { "$set": { "resume": extract_data } }
+            db["resumes"].update_one({"email": request.session.get("email"), "title": title}, set_dict)
+            tex_content = format_to_tex(resume_data)
+            output_tex = "/Users/jayga/PycharmProjects/ResuMeister/ParsingApp/new_test/formatted_resume.tex"
+            save_to_tex(tex_content, output_tex)
+            convert_latex_to_pdf(output_tex)
+            output_file = "/Users/jayga/PycharmProjects/ResuMeister/formatted_resume.pdf"
+            with open(output_file, "rb") as fprb:
+                response = HttpResponse(fprb.read(), content_type="pdf")
+            response["Content-Disposition"] = "attachment; filename=" + title + ".pdf"
             response.set_cookie(key="extract_data", value="", expires=datetime.now())
             response.set_cookie(key="parse_data", value="", expires=datetime.now())
             response.set_cookie(key="title", value="", expires=datetime.now())
-            set_dict = { "$set": { "resume": extract_data } }
-            db["resumes"].update_one({"email": request.session.get("email"), "title": title}, set_dict)
+            return response
         else:
             return redirect("resumeister_app:Login")
-
-        return response
