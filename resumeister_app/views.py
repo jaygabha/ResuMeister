@@ -5,6 +5,7 @@ from django.shortcuts import render, redirect
 # Create your views here.
 from django.http import HttpResponse
 import pymongo
+import os
 from utils import db
 from django.urls import reverse
 from urllib.parse import urlencode
@@ -151,7 +152,7 @@ def UploadResume(request, title):
         if form.is_valid():
             name = str(request.FILES["file"].name)
             ext = name.split('.')[-1]
-            filename = str('/Users/jayga/PycharmProjects/ResuMeister/ParsingApp/new_upload.' + ext)
+            filename = str('./ParsingApp/new_upload.' + ext)
             handle_uploaded_file(request.FILES["file"], filename)
             data = requests.get("http://127.0.0.1:5004/parse_resume", params={"file_path": filename}).json().get(
                 "parsed_resume")
@@ -180,10 +181,10 @@ class SaveResume(View):
             set_dict = { "$set": { "resume": extract_data } }
             db["resumes"].update_one({"email": request.session.get("email"), "title": title}, set_dict)
             tex_content = format_to_tex(resume_data)
-            output_tex = "/Users/jayga/PycharmProjects/ResuMeister/ParsingApp/new_test/formatted_resume.tex"
+            output_tex = "./ParsingApp/new_test/formatted_resume.tex"
             save_to_tex(tex_content, output_tex)
             convert_latex_to_pdf(output_tex)
-            output_file = "/Users/jayga/PycharmProjects/ResuMeister/formatted_resume.pdf"
+            output_file = "./resumeister_app/formatted_resume.pdf"
             with open(output_file, "rb") as fprb:
                 response = HttpResponse(fprb.read(), content_type="pdf")
             response["Content-Disposition"] = "attachment; filename=" + title + ".pdf"
