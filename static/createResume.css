@@ -168,7 +168,7 @@ textarea {
 
 }
 .pro-btns{
-   margin-left: 80%;
+   margin-left: 83%;
    display: flex;
    flex-direction: row;
 }
@@ -257,7 +257,12 @@ textarea {
     border: none;
     background-color: #fff;
 }
-.education-1{
+/* .education-1{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+} */
+#education_form{
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -396,7 +401,12 @@ border: none;
     flex-direction: row;
     justify-content: space-between;
 }
-.projects-1{
+/* .projects-1{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+} */
+#project_form{
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -412,7 +422,12 @@ border: none;
     width: 100%;
 }
 
-.certification-1{
+/* .certification-1{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+} */
+#certification_form{
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -493,6 +508,11 @@ border: none;
     border: none;
 }
 .experience-1{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+#experience_form{
     display: flex;
     flex-direction: column;
     width: 100%;

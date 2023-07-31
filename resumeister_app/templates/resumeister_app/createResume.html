@@ -85,7 +85,8 @@
                     </div> 
                     <hr style="width:100%;text-align:left;margin-left:0; border-style: inset;">
                     <div id = 'formContainer'>
-                        <form class="education-1">
+                        <!-- education_section -->
+                        <form id="education_form" class="education_section_1">
                             <div class="degree-duration">
                             <input type="text" name="degree" id="degree" placeholder="Enter Your Program's Name">
                             <input type="text" name="duration" id="duration" placeholder="Enter Duration">
@@ -120,13 +121,14 @@
                         </div> 
                     <hr style="width:100%;text-align:left;margin-left:0; border-style: inset;">
                     <div id = 'form-container-experience'>
-                        <form class="experience-1">
+                        <form class="experience_section_1" id="experience_form">
                         <div class="experience-duration">
                         <input type="text" name="experience" id="experience" placeholder="Enter Your Position">
                         <input type="text" name="duration" id="duration" placeholder="Enter Duration">
                         </div>
                         <input type="text" name="organisation" id="organisation" placeholder="Enter Your Organisation Name, City, Country">
-                        <div class="experience-role-div">
+                        <textarea type="text" name="experience" id="experience-detail" cols="97" rows="3" placeholder="Enter your experience details in form"></textarea>
+                        <!-- <div class="experience-role-div">
                             <div>
                                 <h5 id="Subhead" >Roles:</h5>
                             </div>                            
@@ -140,9 +142,9 @@
                                 <li><input type="text" name="roles-bullet" id="roles-bullet"  class="coursework-bullet" placeholder="write something"></li>
                                 
                             </ul>
-                        </div>
+                        </div> -->
                            
-                        <!-- <textarea type="text" name="experience" id="experience-detail" cols="97" rows="3" placeholder="Enter your experience details in form"></textarea> -->
+                        
 
                         </form>
 
@@ -163,7 +165,7 @@
                     
                     <hr style="width:100%;text-align:left;margin-left:0; border-style: inset;">
                     <div id = "form-container-project">
-                        <form class="projects-1">
+                        <form id="project_form" class="project_section_1">
                         <div class="project-duration">
                         <input type="text" name="project" id="project" placeholder="Enter Your Project Name">
                         <input type="text" name="duration" id="duration" placeholder="Enter Duration">
@@ -190,8 +192,8 @@
                         </div>     
                     
                     <hr style="width:100%;text-align:left;margin-left:0; border-style: inset;">
-                        <div id = 'form-container-certifications'>
-                            <form class="certification-1">
+                        <div id = 'form-container-certifications'>                        
+                            <form id="certification_form" class="certification_section_1">
                                 <div class="project-duration">
                                     <input type="text" name="certification" id="certification" placeholder="Certification Name">
                                     <input type="text" name="duration" id="duration" placeholder="Enter Duration">
@@ -212,6 +214,7 @@
         </div>
         
     </div>
+    <!-- <script src="../../../static/createResume.js"></script> -->
 
     {% comment %} To add new form under Skill section when add button is clicked {% endcomment %}
     <script>
@@ -302,9 +305,10 @@ addButton.addEventListener("click", function () {
         // Function to add a new form
         function addForm() {
           // Create a new form element
+          education_section++;
           var form = document.createElement('form');
-          form.className = 'education-1';
-          form.id = 'education-form-1'
+          form.className = 'education_section_'+education_section.toString();
+          form.id = 'education_form'
 
           //create a new div
           var div = document.createElement('div');
@@ -393,9 +397,10 @@ addButton.addEventListener("click", function () {
     // Function to add a new form
     function addFormExperience() {
       // Create a new form element
+      experience_section++;
       var form = document.createElement('form');
-      form.className = 'experience-1';
-      form.id = 'experience-form-1'
+      form.className = 'experience_section_'+experience_section.toString();
+      form.id = 'experience_form'
 
       //create a new div
       var div = document.createElement('div');
@@ -450,15 +455,15 @@ addButton.addEventListener("click", function () {
     addButton.addEventListener('click', addFormExperience);
   </script>
 
-
-{% comment %} To add new form under Projects section when add button is clicked {% endcomment %}
+ {% comment %} To add new form under Projects section when add button is clicked   {% endcomment %}
 <script>
     // Function to add a new form
     function addFormProject() {
       // Create a new form element
+      project_section++;
       var form = document.createElement('form');
-      form.className = 'projects-1';
-      form.id = 'project-form-1'
+      form.className = 'project_section_'+project_section.toString();
+      form.id = 'project_form'
 
       //create a new div
       var div = document.createElement('div');
@@ -519,9 +524,10 @@ addButton.addEventListener("click", function () {
     // Function to add a new form
     function addFormCertifications() {
       // Create a new form element
+      certification_section++;
       var form = document.createElement('form');
-      form.className = 'certification-1';
-      form.id = 'certification-form-1'
+      form.className = 'certification_section_'+certification_section.toString();
+      form.id = 'certification_form'
 
       //create a new div
       var div = document.createElement('div');
@@ -578,6 +584,10 @@ addButton.addEventListener("click", function () {
 
 <script>
     var skill_section = 1
+    var education_section = 1
+    var experience_section = 1
+    var project_section = 1
+    var certification_section = 1
 </script>
 
  <script>
@@ -593,25 +603,61 @@ addButton.addEventListener("click", function () {
     }
 
     function removeForm() {
-      var form = document.getElementById('education-form-1');
-      form.remove();
+        if (education_section>1){
+            var form = document.querySelector(".education_section_" + education_section.toString())
+            form.remove();
+            education_section--;
+        }
+        else{
+            console.log("Only one skill section")
+        }
+    //   var form = document.getElementById('education-form-1');
+    //   form.remove();
     }
 
     function removeFormExperience() {
-      var form = document.getElementById('experience-form-1');
-      form.remove();
+        if(experience_section > 1){
+            var form = document.querySelector(".experience_section_" + experience_section.toString())
+            form.remove();
+            experience_section--;
+
+        }
+        else{
+            console.log("Only one skill section")
+        }
+        
+        //   var form = document.getElementById('experience-form-1');
+        //   form.remove();
     }
 
     function removeFormProject() {
-      var form = document.getElementById('project-form-1');
-      form.remove();
+        if(project_section > 1){
+            var form = document.querySelector(".project_section_" + project_section.toString())
+            form.remove();
+            project_section--;
+
+        }
+        else{
+            console.log("Only one skill section")
+        }
+    //   var form = document.getElementById('project-form-1');
+    //   form.remove();
     }
 
     function removeFormCertification() {
-      var form = document.getElementById('certification-form-1');
-      form.remove();
+        if(certification_section > 1){
+            var form = document.querySelector(".certification_section_" + certification_section.toString())
+            form.remove();
+            certification_section--;
+
+        }
+        else{
+            console.log("Only one skill section")
+        }
+    //   var form = document.getElementById('certification-form-1');
+    //   form.remove();
     }
-  </script>
+  </script> 
 
 
     
