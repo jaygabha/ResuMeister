@@ -4,3 +4,4 @@ ParsingApp/flask_venv/*
 */.DS_Store
 db.sqlite3
 ParsingApp/new_test/venv/*
+secrets.env

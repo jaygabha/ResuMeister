@@ -461,6 +461,9 @@ function setCookie(name,value,days) {
     }
     document.cookie = name + "=" + (value || "")  + expires + "; path=/";
 }
+function eraseCookie(name) {
+            document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
 
 function parse_data(){
     let parsed_string = getCookie("parse_data")
@@ -473,9 +476,9 @@ function parse_data(){
     console.log(data);
     let header_form_1 = document.querySelector(".header-inputs1");
     let name = header_form_1.querySelector("input[id='name']");
-    name.setAttribute('value', data["fullname"]);
+    name.value = data["fullname"];
     let linkedin = header_form_1.querySelector("input[id='linkedIn']");
-    linkedin.setAttribute('value', data["linkedin"]);
+    linkedin.value = data["linkedin"];
     let header_form_2 = document.querySelector(".header-inputs2");
     let email = header_form_2.querySelector("input[id='email']");
     email.setAttribute('value', data["email"]);
@@ -503,10 +506,11 @@ function parse_data(){
 }
 
 function extract_data(){
+    eraseCookie("extract_data")
     let extract = {}
     let header_form_1 = document.querySelector(".header-inputs1");
-    let fullname = header_form_1.querySelector("input[id='name']").getAttribute('value');
-    let linkedin = header_form_1.querySelector("input[id='linkedIn']").getAttribute('value');
+    let fullname = header_form_1.querySelector("input[id='name']").value;
+    let linkedin = header_form_1.querySelector("input[id='linkedIn']").value;
     let header_form_2 = document.querySelector(".header-inputs2");
     let email = header_form_2.querySelector("input[id='email']").getAttribute('value');
     let phone = header_form_2.querySelector("input[id='phone']").getAttribute('value');
@@ -548,5 +552,5 @@ function extract_data(){
     }
     console.log(extract)
     setCookie("extract_data", JSON.stringify(extract))
-    window.location.assign("/saveResume")
+    // window.location.assign("/saveResume")
 }

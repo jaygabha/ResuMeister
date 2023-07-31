@@ -9,7 +9,7 @@ from urllib.parse import urlencode
 from django.views import View
 from .forms import UploadFileForm
 import requests
-
+from datetime import datetime
 class HomePageView(View):
     def get(self, request):
         if request.session.has_key('email'):
@@ -90,15 +90,19 @@ class Home(View):
             print(resumes)
             return render(request, 'resumeister_app/main.html', {"resume": resumes})
         else:
-            redirect("/login")
+            redirect("resumeister_app:Login")
 
 
 class ResumeCreation(View):
     def get(self, request):
         if request.session.has_key('email'):
-            return render(request, "resumeister_app/resumecreation.html")
+            response = render(request, "resumeister_app/resumecreation.html")
+            response.set_cookie(key="extract_data", value="", expires=datetime.now())
+            response.set_cookie(key="parse_data", value="", expires=datetime.now())
+            response.set_cookie(key="title", value="", expires=datetime.now())
+            return response
         else:
-            redirect("/login")
+            redirect("resumeister_app:Login")
     def post(self, request):
         if request.session.has_key('email'):
             title = request.POST.get("title")
@@ -115,7 +119,7 @@ class ResumeCreation(View):
                 })
                 return redirect("resumeister_app:Upload Resume",str(title))
         else:
-            redirect("/login")
+            redirect("resumeister_app:Login")
 
 # class Main(View):
 #     def get(self,request):
@@ -147,24 +151,34 @@ def UploadResume(request, title):
             data = requests.get("http://127.0.0.1:5004/parse_resume", params={"file_path": filename}).json().get(
                 "parsed_resume")
             response = render(request, 'resumeister_app/createResume.html')
+            response.set_cookie(key="title", value=title)
             response.set_cookie(key="parse_data", value=data)
+            response.set_cookie(key="extract_data", value="", expires=datetime.now())
             return response
         else:
             raise FileNotFoundError
     else:
         form = UploadFileForm()
-        request.COOKIES["title"] = title
-        return render(request, 'resumeister_app/uploadResume.html', {"form": form, "title": title})
+        response =  render(request, 'resumeister_app/uploadResume.html', {"form": form, "title": title})
+        response.set_cookie(key="title", value=title)
+        return response
 
 
 
 class SaveResume(View):
     def get(self, request):
-        extract_data = request.COOKIES.get("extract_data")
-        title = request.COOKIES.get("title")
-        print(extract_data)
-        response = HttpResponse()
-        response.write(extract_data)
-        response.delete_cookie("extract_data")
-        response.delete_cookie("parse_data")
+        if request.session.has_key('email'):
+            extract_data = request.COOKIES.get("extract_data")
+            title = request.COOKIES.get("title")
+            print(extract_data)
+            response = HttpResponse()
+            response.write(extract_data)
+            response.set_cookie(key="extract_data", value="", expires=datetime.now())
+            response.set_cookie(key="parse_data", value="", expires=datetime.now())
+            response.set_cookie(key="title", value="", expires=datetime.now())
+            set_dict = { "$set": { "resume": extract_data } }
+            db["resumes"].update_one({"email": request.session.get("email"), "title": title}, set_dict)
+        else:
+            return redirect("resumeister_app:Login")
+
         return response
