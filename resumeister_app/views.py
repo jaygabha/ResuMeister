@@ -85,10 +85,38 @@ class RegisterView(View):
 
 class Home(View):
     def get(self,request):
-        # response = HttpResponse()
-        # response.write("<p> Email: " + request.session.get("email") + "</p>")
-        return render(request, 'resumeister_app/main.html')
-    
+        if request.session.has_key('email'):
+            resumes = db["resumes"].find({"email": request.session.get("email")})
+            print(resumes)
+            return render(request, 'resumeister_app/main.html', {"resume": resumes})
+        else:
+            redirect("/login")
+
+
+class ResumeCreation(View):
+    def get(self, request):
+        if request.session.has_key('email'):
+            return render(request, "resumeister_app/resumecreation.html")
+        else:
+            redirect("/login")
+    def post(self, request):
+        if request.session.has_key('email'):
+            title = request.POST.get("title")
+            email = request.session.get("email")
+            find_resume = list(db["resumes"].find({"email": email, "title": title}))
+            print(find_resume)
+            if len(find_resume)>0:
+                return render(request, "resumeister_app/resumecreation.html", {"msg": "A Resume with this title already exists"})
+            else:
+                db["resumes"].insert_one({
+                    "email": email,
+                    "title": title,
+                    "resume": {}
+                })
+                return redirect("resumeister_app:Upload Resume",str(title))
+        else:
+            redirect("/login")
+
 # class Main(View):
 #     def get(self,request):
 #         if request.session.has_key('email'):
@@ -97,40 +125,43 @@ class Home(View):
 
 
 
-class CreateResume(View):
-    def get(self,request):
-        # response = HttpResponse()
-        # response.write("<p> Email: " + request.session.get("email") + "</p>")
-        return render(request, 'resumeister_app/createResume.html')
+def CreateResume(request, resume):
+
+    return render(request, 'resumeister_app/createResume.html')
 
 
 def handle_uploaded_file(f, filename):
     with open(filename, 'wb+') as destination:
         for chunk in f.chunks():
             destination.write(chunk)
-class UploadResume(View):
-    def get(self, request):
-        form = UploadFileForm()
-        return render(request, 'resumeister_app/uploadResume.html', {"form": form})
 
-    def post(self, request):
+
+def UploadResume(request, title):
+    if request.method=='POST':
         form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
             name = str(request.FILES["file"].name)
             ext = name.split('.')[-1]
             filename = str('/Users/jayga/PycharmProjects/ResuMeister/ParsingApp/new_upload.' + ext)
             handle_uploaded_file(request.FILES["file"], filename)
-            data = requests.get("http://127.0.0.1:5004/parse_resume", params={"file_path": filename}).json().get("parsed_resume")
+            data = requests.get("http://127.0.0.1:5004/parse_resume", params={"file_path": filename}).json().get(
+                "parsed_resume")
             response = render(request, 'resumeister_app/createResume.html')
             response.set_cookie(key="parse_data", value=data)
             return response
         else:
             raise FileNotFoundError
+    else:
+        form = UploadFileForm()
+        request.COOKIES["title"] = title
+        return render(request, 'resumeister_app/uploadResume.html', {"form": form, "title": title})
+
 
 
 class SaveResume(View):
     def get(self, request):
         extract_data = request.COOKIES.get("extract_data")
+        title = request.COOKIES.get("title")
         print(extract_data)
         response = HttpResponse()
         response.write(extract_data)

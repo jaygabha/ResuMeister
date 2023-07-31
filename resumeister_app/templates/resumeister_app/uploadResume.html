@@ -23,7 +23,7 @@
         <div class="level1">
             <div class="left-sec">
         <h1>Upload Existing Resume</h1>
-        <form action="{% url 'resumeister_app:Upload Resume' %}" method="POST" enctype="multipart/form-data">
+        <form action="{% url 'resumeister_app:Upload Resume' title %}"  method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <h4>Upload .doc/.docx or .pdf file</h4>
             {{ form }}
@@ -32,7 +32,6 @@
         </form>
         <input type="submit" value="Skip" onclick ="skip()" id="CreateNewbtn">
     </div>
-        <img src="static/images/mainImage.svg" alt="Hello" id="image1">
     </div>
     </div>
     <script>
