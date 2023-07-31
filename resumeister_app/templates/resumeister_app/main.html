@@ -22,7 +22,7 @@
         <div class="level1">
             <div class="left-sec">
         <h1>Craft a perfect resume now.</h1>
-        <input type="submit" value="Create New" onclick = 'location.href = "createResume"' id="CreateNewbtn"> 
+        <input type="submit" value="Create New" onclick = 'location.href = "/create"' id="CreateNewbtn"> 
     </div>
         <img src="static/images/mainImage.svg" alt="Hello" id="image1">
     </div>
@@ -32,42 +32,45 @@
             Resumes
         </h1>
            <div class="level3">
-
+            {% for resume in resume_list %}
+                {% if resume %}
             <div class="resume-card">
                 <img src="/static/images/resume.svg" alt="Avatar" id="resume-image"></image>
                 <div class="container">
-                  <h4><b>Resume 1</b></h4> 
+                  <h4><b>{{ resume }}</b></h4>
                   <p>Created on: 20/07/2023</p>
                   <div class="card-button">
-                    <input type="submit" value="Edit" onclick = 'location.href = "login.html"' id="editbtn"> 
+                    <input type="submit" value="Edit" onclick = 'location.href = "/createResume/{{ resume }}"' id="editbtn">
+                    {% comment %} <input type="submit" value="Edit" onclick = 'location.href = "{% url "createResume" resume="your_resume_here"  %}"' id="editbtn">  {% endcomment %}
                     <input type="submit" value="Delete" onclick = 'deleteCard(this.parentNode.parentNode.parentNode)' id="deletebtn">
                   </div>
                 </div>
             </div>
+                {% endif %}
+            {% endfor %}
+{#            <div class="resume-card">#}
+{#                <img src="/static/images/resume.svg" alt="Avatar" id="resume-image"></image>#}
+{#                <div class="container">#}
+{#                  <h4><b>Resume 2</b></h4> #}
+{#                  <p>Created on: 20/07/2023</p>#}
+{#                  <div class="card-button">#}
+{#                    <input type="submit" value="Edit" onclick = 'location.href = "login.html"' id="editbtn"> #}
+{#                    <input type="submit" value="Delete" onclick = 'deleteCard(this.parentNode.parentNode.parentNode)' id="deletebtn">#}
+{#                  </div>#}
+{#                </div>#}
+{#            </div>#}
 
-            <div class="resume-card">
-                <img src="/static/images/resume.svg" alt="Avatar" id="resume-image"></image>
-                <div class="container">
-                  <h4><b>Resume 2</b></h4> 
-                  <p>Created on: 20/07/2023</p>
-                  <div class="card-button">
-                    <input type="submit" value="Edit" onclick = 'location.href = "login.html"' id="editbtn"> 
-                    <input type="submit" value="Delete" onclick = 'deleteCard(this.parentNode.parentNode.parentNode)' id="deletebtn">
-                  </div>
-                </div>
-            </div>
-
-            <div class="resume-card">
-                <img src="/static/images/resume.svg" alt="Avatar" id="resume-image"></image>
-                <div class="container">
-                  <h4><b>Resume 3</b></h4> 
-                  <p>Created on: 20/07/2023</p>
-                  <div class="card-button">
-                    <input type="submit" value="Edit" onclick = 'location.href = "login.html"' id="editbtn"> 
-                    <input type="submit" value="Delete" onclick = 'deleteCard(this.parentNode.parentNode.parentNode)' id="deletebtn">
-                  </div>
-                </div>
-            </div>
+{#            <div class="resume-card">#}
+{#                <img src="/static/images/resume.svg" alt="Avatar" id="resume-image"></image>#}
+{#                <div class="container">#}
+{#                  <h4><b>Resume 3</b></h4> #}
+{#                  <p>Created on: 20/07/2023</p>#}
+{#                  <div class="card-button">#}
+{#                    <input type="submit" value="Edit" onclick = 'location.href = "login.html"' id="editbtn"> #}
+{#                    <input type="submit" value="Delete" onclick = 'deleteCard(this.parentNode.parentNode.parentNode)' id="deletebtn">#}
+{#                  </div>#}
+{#                </div>#}
+{#            </div>#}
 
            </div>
            

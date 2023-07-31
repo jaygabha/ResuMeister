@@ -86,9 +86,14 @@ class RegisterView(View):
 class Home(View):
     def get(self,request):
         if request.session.has_key('email'):
-            resumes = db["resumes"].find({"email": request.session.get("email")})
+            resumes = list(db["resumes"].find({"email": request.session.get("email")}))
+            resume_list = []
             print(resumes)
-            return render(request, 'resumeister_app/main.html', {"resume": resumes})
+            for items in resumes:
+                resume_list.append(items.get('title'))
+            # for l in resume_list:
+            #     print(l)
+            return render(request, 'resumeister_app/main.html', {"resume": resumes, "resume_list": resume_list})
         else:
             redirect("resumeister_app:Login")
 
