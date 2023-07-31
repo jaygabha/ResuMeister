@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResuMeister</title>
+</head>
+<link rel="stylesheet" href="../../../static/main.css">
+<link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+<body>
+    <div class="upper-nav">
+
+        <h1>ResuMeister</h1>
+        <div class="buttons-sec">
+            {% comment %} <input type="submit" value="Log Out" onclick = "location.href = 'login.html'" id="logout">  {% endcomment %}
+            <input type="submit" value="Log Out" onclick = 'location.href = "/login"' id="logout">
+
+
+        </div>
+    </div>
+    <div class="main-body">
+        <div class="level1">
+            <div class="left-sec">
+        <h1>Upload Existing Resume</h1>
+        <form action="{% url 'resumeister_app:ResumeCreatiom' %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% if msg %}
+                <h5 style="color: red">{{ msg }}</h5>
+            {% endif %}
+            <h4>Let's Create a new resume. Enter Title</h4>
+            <input type="text" id="title" name="title" placeholder="TITLE FOR YOUR RESUME">
+{#            <input type="file" accept="application/msword,application/pdf" id="resume_file" name="resume">#}
+            <input type="submit" value="Upload">
+        </form>
+    </div>
+    </div>
+    </div>
+    <script>
+        function deleteCard(card) {
+            card.remove();
+        }
+    </script>
+    <script>
+        function eraseCookie(name) {
+            document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        }
+        function skip(){
+            eraseCookie("parse_data")
+            window.location.assign("/createResume")
+        }
+    </script>
+</body>
+</html>
