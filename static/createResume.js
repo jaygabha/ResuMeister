@@ -490,6 +490,7 @@ function parse_data(){
     summary.setAttribute('value', data["summary"])
     var skills = []
     skills = data["skills"];
+
     for(let i=0;i<skills.length;i++){
         let skill_form = document.querySelector(".skill_section_" + skill_section.toString())
         let category = skill_form.querySelector("input[id='skill_category_id']");
@@ -503,7 +504,89 @@ function parse_data(){
         skills_ele.setAttribute('value', skills_string);
         document.querySelector("button[id='add-skills']").click();
     }
+
+    let education_forms = document.querySelectorAll("[class^='education_section_']");
+    let education_data = data["education"];
+    for (let i = 0; i < education_data.length; i++) {
+        let form = education_forms[i];
+        let degree = form.querySelector("input[id='degree']");
+        degree.value = education_data[i]["degree"];
+        let duration = form.querySelector("input[id='duration']");
+        duration.value = education_data[i]["duration"];
+        let university = form.querySelector("input[id='university']");
+        university.value = education_data[i]["university"];
+        let gpa = form.querySelector("input[id='gpa']");
+        gpa.value = education_data[i]["gpa"];
+
+        let coursework_list = education_data[i]["coursework"];
+        let coursework_bullets = form.querySelectorAll("input[id='coursework-bullet']");
+        for (let j = 0; j < coursework_list.length; j++) {
+        if (j < coursework_bullets.length) {
+            coursework_bullets[j].value = coursework_list[j];
+        } else {
+            // Create new input elements if needed
+            let create_li = document.createElement('li');
+            let course_bullet_Input = document.createElement('input');
+            course_bullet_Input.type = 'text';
+            course_bullet_Input.name = 'coursework-bullet';
+            course_bullet_Input.id = 'coursework-bullet';
+            course_bullet_Input.className = 'coursework-bullet';
+            course_bullet_Input.value = coursework_list[j];
+            create_li.appendChild(course_bullet_Input);
+            form.querySelector(".ul-bullet-course").appendChild(create_li);
+        }
+        }
+    }
+    //Experience
+    let experience_forms = document.querySelectorAll("[class^='experience_section_']");
+    let experience_data = data["experience"];
+    for (let i = 0; i < experience_data.length; i++) {
+        let form = experience_forms[i];
+        let experience = form.querySelector("input[id='experience']");
+        experience.value = experience_data[i]["position"];
+        let duration = form.querySelector("input[id='duration']");
+        duration.value = experience_data[i]["duration"];
+        let organisation = form.querySelector("input[id='organisation']");
+        organisation.value = experience_data[i]["organization"];
+        let experience_detail = form.querySelector("textarea[id='experience-detail']");
+        experience_detail.value = experience_data[i]["details"];
+      }
+
+    //Projects
+
+    let project_forms = document.querySelectorAll("[class^='project_section_']");
+    let project_data = data["projects"];
+    for (let i = 0; i < project_data.length; i++) {
+        let form = project_forms[i];
+        let project = form.querySelector("input[id='project']");
+        project.value = project_data[i]["name"];
+        let duration = form.querySelector("input[id='duration']");
+        duration.value = project_data[i]["duration"];
+        let organisation = form.querySelector("input[id='organisation-project']");
+        organisation.value = project_data[i]["organization"];
+        let project_detail = form.querySelector("textarea[id='project-detail']");
+        project_detail.value = project_data[i]["details"];
+    }
+
+    //Certifications
+
+    let certification_forms = document.querySelectorAll("[class^='certification_section_']");
+    let certification_data = data["certifications"];
+    for (let i = 0; i < certification_data.length; i++) {
+        let form = certification_forms[i];
+        let certification = form.querySelector("input[id='certification']");
+        certification.value = certification_data[i]["name"];
+        let duration = form.querySelector("input[id='duration']");
+        duration.value = certification_data[i]["duration"];
+        let organisation = form.querySelector("input[id='organisation']");
+        organisation.value = certification_data[i]["organization"];
+        let certification_detail = form.querySelector("textarea[id='certification-detail']");
+        certification_detail.value = certification_data[i]["details"];
+  }
 }
+
+
+
 
 function extract_data(){
     eraseCookie("extract_data")
@@ -523,6 +606,11 @@ function extract_data(){
     extract["github"] = github
     extract["summary"] = summary
     extract["skills"] = []
+    extract["education"] = []
+    extract["experience"] = []
+    extract["projects"] = []
+    extract["certifications"] = []
+
     for(let i=1;i<=skill_section;i++){
         let skill = {}
         let skill_form = document.querySelector(".skill_section_" + i.toString())
@@ -550,7 +638,68 @@ function extract_data(){
 
         extract["skills"].push(skill);
     }
+
+    for(let i=1;i<=education_section;i++){
+        let education_forms = document.querySelectorAll("[class^='education_section_']");
+  education_forms.forEach(form => {
+        let education_item = {};
+        education_item["degree"] = form.querySelector("input[id='degree']").value;
+        education_item["duration"] = form.querySelector("input[id='duration']").value;
+        education_item["university"] = form.querySelector("input[id='university']").value;
+        education_item["gpa"] = form.querySelector("input[id='gpa']").value;
+
+    education_item["coursework"] = [];
+    let coursework_bullets = form.querySelectorAll("input[id='coursework-bullet']");
+    coursework_bullets.forEach(input => {
+      if (input.value.trim() !== "") {
+        education_item["coursework"].push(input.value.trim());
+      }
+    });
+
+    extract["education"].push(education_item);
+  });
+
+    }
+
+    for(let i=1;i<=experience_section;i++){
+        let experience_forms = document.querySelectorAll("[class^='experience_section_']");
+    experience_forms.forEach(form => {
+        let experience_item = {};
+        experience_item["position"] = form.querySelector("input[id='experience']").value;
+        experience_item["duration"] = form.querySelector("input[id='duration']").value;
+        experience_item["organization"] = form.querySelector("input[id='organisation']").value;
+        experience_item["details"] = form.querySelector("textarea[id='experience-detail']").value;
+        extract["experience"].push(experience_item);
+    });
+}
+
+    for(let i=1;i<=project_section;i++){
+        let project_forms = document.querySelectorAll("[class^='project_section_']");
+  project_forms.forEach(form => {
+        let project_item = {};
+        project_item["name"] = form.querySelector("input[id='project']").value;
+        project_item["duration"] = form.querySelector("input[id='duration']").value;
+        project_item["organization"] = form.querySelector("input[id='organisation-project']").value;
+        project_item["details"] = form.querySelector("textarea[id='project-detail']").value;
+        extract["projects"].push(project_item);
+  });
+}
+    for(let i=1;i<=certification_section;i++){
+        let certification_forms = document.querySelectorAll("[class^='certification_section_']");
+  certification_forms.forEach(form => {
+        let certification_item = {};
+        certification_item["name"] = form.querySelector("input[id='certification']").value;
+        certification_item["duration"] = form.querySelector("input[id='duration']").value;
+        certification_item["organization"] = form.querySelector("input[id='organisation']").value;
+        certification_item["details"] = form.querySelector("textarea[id='certification-detail']").value;
+        extract["certifications"].push(certification_item);
+  });
+    }
+
     console.log(extract)
     setCookie("extract_data", JSON.stringify(extract))
-    window.location.assign("/saveResume")
+
+
+
+
 }
