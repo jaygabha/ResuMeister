@@ -59,7 +59,7 @@
                     <!-- <h4 id="Subhead">Skills</h4> -->
                     <hr style="width:100%;text-align:left;margin-left:0; border-style: inset;">
                     <div id = 'formContainer-skills'>
-                    <form class="skills">
+                    <form class="skills skill_section_1">
                         <!-- <textarea type="text" name="skills" id="skills-detail" cols="97" rows="5" placeholder="Enter your skills in form or bullets."></textarea> -->
                         <div class="skill-input-div">
                             <input type="text" id="skill_category_id" name="skill_category_name" class="skill_input_category" placeholder="Category">
@@ -217,9 +217,10 @@
     <script>
         // Function to add a new form
         function addskillForm() {
+            skill_section++;
           // Create a new form element
           var form = document.createElement('form');
-          form.className = 'skills';
+          form.className = 'skills skill_section_' + skill_section.toString();
           form.id = 'skill-form-1'
 
           //create a new div
@@ -575,12 +576,20 @@ addButton.addEventListener("click", function () {
     addButton.addEventListener('click', addFormCertifications);
   </script>
 
-
+<script>
+    var skill_section = 1
+</script>
 
  <script>
     function removeFormSkill() {
-      var form = document.getElementById('skill-form-1');
-      form.remove();
+        if (skill_section>1){
+            var form = document.querySelector(".skill_section_" + skill_section.toString())
+            form.remove();
+            skill_section--;
+        }
+        else{
+            console.log("Only one skill section")
+        }
     }
 
     function removeForm() {
