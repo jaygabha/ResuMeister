@@ -126,3 +126,12 @@ class UploadResume(View):
             return response
         else:
             raise FileNotFoundError
+
+
+class SaveResume(View):
+    def get(self, request):
+        extract_data = request.COOKIES.get("extract_data")
+        print(extract_data)
+        response = HttpResponse()
+        response.write(extract_data)
+        return response

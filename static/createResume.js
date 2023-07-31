@@ -441,9 +441,31 @@ function removeFormCertification() {
 //   form.remove();
 }
 
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+
+function setCookie(name,value,days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+}
+
 function parse_data(){
-    let parsed_string = document.cookie.split("parse_data=\"")[1]
+    let parsed_string = getCookie("parse_data")
     parsed_string = parsed_string.replaceAll(/\\054/g, ',');
+    parsed_string = parsed_string.slice(1,)
     parsed_string = parsed_string.slice(0,-1)
     parsed_string = parsed_string.replaceAll("\'", "\"");
     console.log(parsed_string);
@@ -479,7 +501,6 @@ function parse_data(){
         document.querySelector("button[id='add-skills']").click();
     }
 }
-
 
 function extract_data(){
     let extract = {}
@@ -521,4 +542,6 @@ function extract_data(){
         extract["skills"].push(skill);
     }
     console.log(extract)
+    setCookie("extract_data", JSON.stringify(extract))
+    window.location.assign("/saveResume")
 }
