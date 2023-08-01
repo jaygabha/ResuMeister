@@ -26,13 +26,16 @@ class HomePageView(View):
 
 class LoginView(View):
     def get(self, request):
+        if request.session.has_key('email'):
+            return redirect("resumeister_app:Homepage Logged In")
         msg = ''
         msg = request.GET.get('msg')
         response = render(request, 'resumeister_app/login.html', {"msg":msg})
         return response
     def post(self, request):
         if request.session.has_key('email'):
-            return redirect('/main')
+            return redirect("resumeister_app:Homepage Logged In")
+
         else:
             email = request.POST.get("email")
             pwd = request.POST.get("pass")
@@ -58,14 +61,14 @@ class LoginView(View):
 class RegisterView(View):
     def get(self, request):
         if request.session.has_key('email'):
-            return redirect('/main')
+            return redirect("resumeister_app:Homepage Logged In")
         msg = ''
         msg = request.GET.get('msg')
         response = render(request, 'resumeister_app/register.html', {"msg": msg})
         return response
     def post(self, request):
         if request.session.has_key('email'):
-            return redirect('/main')
+            return redirect("resumeister_app:Homepage Logged In")
         else:
             email = request.POST.get("email")
             pwd = request.POST.get("pass")
@@ -87,7 +90,7 @@ class RegisterView(View):
                 request.session['email'] = email
                 request.session['first_name'] = first_name
                 request.session['last_name'] = last_name
-                return redirect('/main')
+                return redirect("resumeister_app:Homepage Logged In")
 
 
 class Home(View):
@@ -103,7 +106,7 @@ class Home(View):
             response.set_cookie(key="extract_data", value="", expires=datetime.now())
             return response
         else:
-            redirect("resumeister_app:Login")
+            return redirect("resumeister_app:Login")
 
 
 class ResumeCreation(View):
@@ -115,7 +118,7 @@ class ResumeCreation(View):
             response.set_cookie(key="title", value="", expires=datetime.now())
             return response
         else:
-            redirect("resumeister_app:Login")
+            return redirect("resumeister_app:Login")
     def post(self, request):
         if request.session.has_key('email'):
             title = request.POST.get("title")
@@ -132,7 +135,7 @@ class ResumeCreation(View):
                 })
                 return redirect("resumeister_app:Upload Resume",str(title))
         else:
-            redirect("resumeister_app:Login")
+            return redirect("resumeister_app:Login")
 
 # class Main(View):
 #     def get(self,request):
@@ -140,7 +143,11 @@ class ResumeCreation(View):
 #             return redirect('/homepage_logged_in')
 #         return render(request, 'resumeister_app/main.html')
 
-
+def Logout(request):
+    if request.session.has_key('email'):
+        del request.session['email']
+        request.session.modified = True
+    return redirect("resumeister_app:Landing Page")
 
 def CreateResume(request, resume):
     email = request.session.get("email")
