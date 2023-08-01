@@ -477,6 +477,9 @@ function parse_data(){
     // parsed_string = parsed_string.replace(/}$/m,"")
     console.log(parsed_string);
     let data = JSON.parse(parsed_string);
+    if( Object.keys(data).length === 0){
+        return
+    }
     console.log(data);
     let header_form_1 = document.querySelector(".header-inputs1");
     let name = header_form_1.querySelector("input[id='name']");
