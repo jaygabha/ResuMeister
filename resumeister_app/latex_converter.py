@@ -46,13 +46,17 @@ def format_to_tex(resume_text):
     #
     education_list = """"""
     for edu in resume_text.get("education"):
+        coursework = ""
+        for i in edu.get("coursework"):
+            coursework += str(i).replace(",","{,}")
+            coursework += " "
         mystr = """
             \\educationItem[
                 university=""" + str(edu.get("university")).replace(",","{,}") + """,
                 graduation=""" + str(edu.get("duration")).replace(",","{,}") + """,
                 grade=""" + str(edu.get("gpa")).replace(",","{,}") + """,
                 program=""" + str(edu.get("degree")).replace(",","{,}") + """,
-                coursework=""" + str(edu.get("coursework")[0]).replace(",","{,}") + """
+                coursework=""" + coursework + """
             ]
         """
         education_list += mystr
