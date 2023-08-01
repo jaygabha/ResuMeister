@@ -1,0 +1,26 @@
+<!-- skill_extractor_app/templates/results.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Extracted Skills</title>
+</head>
+<link rel="stylesheet" href="../../../static/skills.css">
+<body>
+    <div class="nav-bar">
+        <h1>ResuMeister</h1>
+        <div class="nav-btns">
+            <input type="submit" value="Home" onclick = 'location.href = "/main"' id="main">
+            <input type="submit" value="Log Out" onclick = 'location.href = "/login"' id="logout">
+        </div>
+      </div>
+<div class="main-body">
+    <h1>Extracted Skills</h1>
+    <ul>
+        {% for skill in suggested_skills %}
+            <li>{{ skill }}</li>
+        {% endfor %}
+    </ul>
+    
+</div>
+</body>
+</html>

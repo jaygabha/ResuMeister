@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-from .views import HomePageView, LoginView, RegisterView, Home, CreateResume, UploadResume, SaveResume, ResumeCreation
+from .views import HomePageView, LoginView, RegisterView, Home, CreateResume, UploadResume, SaveResume, ResumeCreation, extract_skills_view
 
 app_name = 'resumeister_app'
 urlpatterns = [
@@ -13,5 +13,6 @@ urlpatterns = [
     path('deleteResume/<str:resume>', views.DeleteResume, name="Create Resume"),
     path('uploadResume/<str:title>', views.UploadResume, name="Upload Resume"),
     path('saveResume/', SaveResume.as_view(),name="Save Resume"),
-    path('create/', ResumeCreation.as_view(), name="ResumeCreatiom")
+    path('create/', ResumeCreation.as_view(), name="ResumeCreatiom"),
+    path('extract_skills/', extract_skills_view, name='extract_skills'),
 ]

@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap');
+body{
+    padding: 0px;
+    margin: 0px;
+    background-color: #FEBA33;
+    font-family: 'Rubik', sans-serif;
+
+}
+
+.upper-nav{
+    background-color:#18454e;
+    width: 100vw;
+    height: 10vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    position: fixed;
+    color:#fff;
+
+
+    
+}
+.upper-nav h1{
+    font-size: 2rem;
+    
+}
+
+
+.buttons-sec{
+    margin-top: 1rem;
+    
+}
+
+.main-body{
+    margin: 2rem;
+
+}
+
+#logout, #main{
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top:1rem;
+    margin-left: 2rem;
+    font-size: 1rem;
+  }
+#skills{
+    background-color: #fff;
+    color: black;
+    padding: 10px;
+    border: none;
+    border-radius: 2rem;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+
+  #skills:active {
+    background-color: #BA2D0B;
+    box-shadow: 0px 15px 20px #BA2D0B;
+    color: #fff;
+    font-size: 1.5rem;
+  }
+
+  #skills:hover {
+    background-color: #BA2D0B;
+    box-shadow: 0px 15px 20px #BA2D0B;
+    color: #fff;
+    transform: translateY(7px);
+  }
+
+  .nav-bar{
+    height: 8vh;
+    width: 100vw;
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  

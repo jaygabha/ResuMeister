@@ -17,6 +17,12 @@ from .latex_converter import format_to_tex, save_to_tex, convert_latex_to_pdf
 from bson import json_util
 
 
+import spacy
+from spacy.matcher import PhraseMatcher
+from skillNer.general_params import SKILL_DB
+from skillNer.skill_extractor_class import SkillExtractor
+import en_core_web_sm
+
 class HomePageView(View):
     def get(self, request):
         if request.session.has_key('email'):
@@ -218,3 +224,55 @@ class SaveResume(View):
             return response
         else:
             return redirect("resumeister_app:Login")
+
+
+
+def extract_skills_from_job_description(job_description):
+    nlp = spacy.load('en_core_web_sm')
+    
+    # Init skill extractor
+    skill_extractor = SkillExtractor(nlp, job_description, PhraseMatcher)
+
+    # Annotate the job description to get skills
+    annotations = skill_extractor.annotate()
+
+    # Extract 'doc_node_value' from 'full_matches' and 'ngram_scored'
+    doc_node_values = []
+
+    # Extract 'doc_node_value' from 'full_matches'
+    for item in annotations['results']['full_matches']:
+        doc_node_values.append(item['doc_node_value'])
+
+    # Extract 'doc_node_value' from 'ngram_scored'
+    for item in annotations['results']['ngram_scored']:
+        doc_node_values.append(item['doc_node_value'])
+
+    return doc_node_values
+
+class SkillExtractor:
+    def __init__(self, nlp, job_description, phrase_matcher):
+        self.nlp = nlp
+        self.job_description = job_description
+        self.matcher = phrase_matcher(nlp.vocab)
+        self.matcher.add("SKILLS", None, *[nlp(skill) for skill in self.extract_skills_from_job()])
+
+    def extract_skills_from_job(self):
+        doc = self.nlp(self.job_description)
+        # In this example, we'll extract nouns as skills from the job description
+        return list(set(chunk.text for chunk in doc.noun_chunks))
+
+    def annotate(self):
+        doc = self.nlp(self.job_description)
+        matches = self.matcher(doc)
+        annotations = {"results": {"full_matches": [], "ngram_scored": []}}
+        for match_id, start, end in matches:
+            span = doc[start:end]
+            annotations["results"]["full_matches"].append({"doc_node_value": span.text})
+        return annotations
+
+def extract_skills_view(request):
+    if request.method == 'POST':
+        job_description = request.POST.get('job_description', '')
+        suggested_skills = extract_skills_from_job_description(job_description)
+        return render(request, 'resumeister_app/skills.html', {'suggested_skills': suggested_skills})
+    return render(request, 'resumeister_app/description.html')
