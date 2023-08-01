@@ -42,7 +42,7 @@
                   <div class="card-button">
                     <input type="submit" value="Edit" onclick = 'location.href = "/createResume/{{ resume }}"' id="editbtn">
                     {% comment %} <input type="submit" value="Edit" onclick = 'location.href = "{% url "createResume" resume="your_resume_here"  %}"' id="editbtn">  {% endcomment %}
-                    <input type="submit" value="Delete" onclick = 'deleteCard(this.parentNode.parentNode.parentNode)' id="deletebtn">
+                    <input type="submit" value="Delete" onclick = 'location.href = "/deleteResume/{{ resume }}"' id="deletebtn">
                   </div>
                 </div>
             </div>

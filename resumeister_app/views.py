@@ -152,6 +152,10 @@ def CreateResume(request, resume):
     response.set_cookie(key="parse_data", value=data_str)
     return response
 
+def DeleteResume(request, resume):
+    email = request.session.get("email")
+    db["resumes"].delete_one({"email": email, "title": resume})
+    return redirect("resumeister_app:Homepage Logged In")
 
 def handle_uploaded_file(f, filename):
     with open(filename, 'wb+') as destination:
