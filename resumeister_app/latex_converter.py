@@ -15,7 +15,7 @@ def format_to_tex(resume_text):
             github={github}
         ]
 
-        \\summary{{summary}}
+        \\summary{{ {summary} }}
 
         \\education{{
             {education_list}
@@ -144,6 +144,8 @@ def format_to_tex(resume_text):
         if flag:
             mystr += points
         certi_list += mystr
+
+    print(resume_text.get("summary"))
 
     # Fill in the template with the extracted information
     tex_content = tex_template.format(

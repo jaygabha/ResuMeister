@@ -467,6 +467,11 @@ function eraseCookie(name) {
 
 function parse_data(){
     let parsed_string = getCookie("parse_data")
+    if (parsed_string == null){
+        parsed_string = get_parse_data()
+        parsed_string = "{" + parsed_string + "}"
+        parsed_string = parsed_string.replaceAll("&quot;", "\"")
+    }
     parsed_string = parsed_string.replaceAll(/\\054/g, ',');
     parsed_string = parsed_string.slice(1,)
     parsed_string = parsed_string.slice(0,-1)

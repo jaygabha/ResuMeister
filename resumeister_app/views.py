@@ -95,12 +95,13 @@ class Home(View):
         if request.session.has_key('email'):
             resumes = list(db["resumes"].find({"email": request.session.get("email")}))
             resume_list = []
-            print(resumes)
             for items in resumes:
                 resume_list.append(items.get('title'))
-            # for l in resume_list:
-            #     print(l)
-            return render(request, 'resumeister_app/main.html', {"resume": resumes, "resume_list": resume_list})
+            response = render(request, 'resumeister_app/main.html', {"resume": resumes, "resume_list": resume_list})
+            response.set_cookie(key="parse_data", value="", expires=datetime.now())
+            response.set_cookie(key="title", value="", expires=datetime.now())
+            response.set_cookie(key="extract_data", value="", expires=datetime.now())
+            return response
         else:
             redirect("resumeister_app:Login")
 
@@ -142,12 +143,13 @@ class ResumeCreation(View):
 
 
 def CreateResume(request, resume):
-    response = render(request, 'resumeister_app/createResume.html')
     email = request.session.get("email")
-    response.set_cookie(key="title", value=resume)
     data = json.loads(json_util.dumps(db["resumes"].find_one({"email": email, "title": resume}, {"_id": 0})))
-    data = data.get("resume")
-    response.set_cookie(key="parse_data", value=json.dumps(data))
+    data_str = json.dumps(data.get("resume"))
+    print(data_str)
+    response = render(request, 'resumeister_app/createResume.html', {"parse_data": data_str})
+    response.set_cookie(key="title", value=resume)
+    response.set_cookie(key="parse_data", value=data_str)
     return response
 
 
