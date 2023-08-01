@@ -14,6 +14,7 @@ from .forms import UploadFileForm
 import requests
 from datetime import datetime
 from .latex_converter import format_to_tex, save_to_tex, convert_latex_to_pdf
+from bson import json_util
 
 
 class HomePageView(View):
@@ -141,8 +142,13 @@ class ResumeCreation(View):
 
 
 def CreateResume(request, resume):
-
-    return render(request, 'resumeister_app/createResume.html')
+    response = render(request, 'resumeister_app/createResume.html')
+    email = request.session.get("email")
+    response.set_cookie(key="title", value=resume)
+    data = json.loads(json_util.dumps(db["resumes"].find_one({"email": email, "title": resume}, {"_id": 0})))
+    data = data.get("resume")
+    response.set_cookie(key="parse_data", value=json.dumps(data))
+    return response
 
 
 def handle_uploaded_file(f, filename):
@@ -183,7 +189,7 @@ class SaveResume(View):
             print(extract_data)
             resume_data = json.loads(extract_data)
             print(resume_data)
-            set_dict = { "$set": { "resume": extract_data } }
+            set_dict = { "$set": { "resume": resume_data } }
             db["resumes"].update_one({"email": request.session.get("email"), "title": title}, set_dict)
             tex_content = format_to_tex(resume_data)
             output_tex = "./ParsingApp/new_test/formatted_resume.tex"

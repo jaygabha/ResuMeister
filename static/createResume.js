@@ -470,7 +470,11 @@ function parse_data(){
     parsed_string = parsed_string.replaceAll(/\\054/g, ',');
     parsed_string = parsed_string.slice(1,)
     parsed_string = parsed_string.slice(0,-1)
+    parsed_string = parsed_string.replaceAll(/\\0/g,'');
     parsed_string = parsed_string.replaceAll("\'", "\"");
+    parsed_string = parsed_string.replaceAll("\\", "")
+    // parsed_string = parsed_string.replace("{", "")
+    // parsed_string = parsed_string.replace(/}$/m,"")
     console.log(parsed_string);
     let data = JSON.parse(parsed_string);
     console.log(data);
@@ -481,44 +485,50 @@ function parse_data(){
     linkedin.value = data["linkedin"];
     let header_form_2 = document.querySelector(".header-inputs2");
     let email = header_form_2.querySelector("input[id='email']");
-    email.setAttribute('value', data["email"]);
+    email.value = data["email"];
     let phone = header_form_2.querySelector("input[id='phone']");
-    phone.setAttribute('value', data["phone"]);
+    phone.value = data["phone"];
     let github = header_form_2.querySelector("input[id='github']");
-    github.setAttribute('value', data["github"]);
+    github.value = data["github"];
     let summary = document.querySelector("textarea[id='summary-detail']")
-    summary.setAttribute('value', data["summary"])
+    summary.value = data["summary"];
     var skills = []
     skills = data["skills"];
-
-    for(let i=0;i<skills.length;i++){
-        let skill_form = document.querySelector(".skill_section_" + skill_section.toString())
-        let category = skill_form.querySelector("input[id='skill_category_id']");
-        category.setAttribute('value', skills[i]["category"]);
-        let skills_ele = skill_form.querySelector("input[id='skill_skils_id']");
-        skills_string = ""
-        for(let j=0;j<skills[i]["skills"].length;j++){
-            skills_string += skills[i]["skills"][j];
-            skills_string += ", ";
-        }
-        skills_ele.setAttribute('value', skills_string);
+    for(i=1;i<skills.length;i++){
         document.querySelector("button[id='add-skills']").click();
     }
+    for(let i=1;i<=skills.length;i++){
+        let skill_form = document.querySelector(".skill_section_" + i.toString())
+        let category = skill_form.querySelector("input[id='skill_category_id']");
+        category.value = skills[i-1]["category"];
+        let skills_ele = skill_form.querySelector("input[id='skill_skills_id']");
+        skills_string = ""
+        for(let j=0;j<skills[i-1]["skills"].length;j++){
+            if(skills[i-1]["skills"][j]) {
+                skills_string += skills[i - 1]["skills"][j];
+                skills_string += ", ";
+            }
+            skills_string.slice(0,-2)
+        }
+        skills_ele.value = skills_string;
+    }
 
-    let education_forms = document.querySelectorAll("[class^='education_section_']");
     let education_data = data["education"];
-    for (let i = 0; i < education_data.length; i++) {
-        let form = education_forms[i];
+    for(let i=1;i<education_data.length;i++){
+        document.querySelector("button[id='add']").click();
+    }
+    for (let i = 1; i <= education_data.length; i++) {
+        let form = document.querySelector(".education_section_" + i.toString());
         let degree = form.querySelector("input[id='degree']");
-        degree.value = education_data[i]["degree"];
+        degree.value = education_data[i-1]["degree"];
         let duration = form.querySelector("input[id='duration']");
-        duration.value = education_data[i]["duration"];
+        duration.value = education_data[i-1]["duration"];
         let university = form.querySelector("input[id='university']");
-        university.value = education_data[i]["university"];
-        let gpa = form.querySelector("input[id='gpa']");
-        gpa.value = education_data[i]["gpa"];
+        university.value = education_data[i-1]["university"];
+        let gpa = form.querySelector("input[name='gpa']");
+        gpa.value = education_data[i-1]["gpa"];
 
-        let coursework_list = education_data[i]["coursework"];
+        let coursework_list = education_data[i-1]["coursework"];
         let coursework_bullets = form.querySelectorAll("input[id='coursework-bullet']");
         for (let j = 0; j < coursework_list.length; j++) {
         if (j < coursework_bullets.length) {
@@ -538,50 +548,76 @@ function parse_data(){
         }
     }
     //Experience
-    let experience_forms = document.querySelectorAll("[class^='experience_section_']");
     let experience_data = data["experience"];
-    for (let i = 0; i < experience_data.length; i++) {
-        let form = experience_forms[i];
+    for(let i=1;i<experience_data.length;i++){
+        document.querySelector("button[id='add-experience']").click();
+    }
+    for (let i = 1; i <= experience_data.length; i++) {
+        let form = document.querySelector(".experience_section_" + i.toString());
         let experience = form.querySelector("input[id='experience']");
-        experience.value = experience_data[i]["position"];
+        experience.value = experience_data[i-1]["position"];
         let duration = form.querySelector("input[id='duration']");
-        duration.value = experience_data[i]["duration"];
+        duration.value = experience_data[i-1]["duration"];
         let organisation = form.querySelector("input[id='organisation']");
-        organisation.value = experience_data[i]["organization"];
+        organisation.value = experience_data[i-1]["organization"];
         let experience_detail = form.querySelector("textarea[id='experience-detail']");
-        experience_detail.value = experience_data[i]["details"];
+        let exp_str = ""
+        experience_data[i-1]["details"].forEach(point =>{
+            if(point) {
+                exp_str += point
+                exp_str += "\n"
+            }
+        })
+        experience_detail.value = exp_str
       }
 
     //Projects
-
-    let project_forms = document.querySelectorAll("[class^='project_section_']");
     let project_data = data["projects"];
-    for (let i = 0; i < project_data.length; i++) {
-        let form = project_forms[i];
+    for(let i=1;i<project_data.length;i++){
+        document.querySelector("button[id='add-project']").click();
+    }
+    for (let i = 1; i <= project_data.length; i++) {
+        let form = document.querySelector(".project_section_" + i.toString());
         let project = form.querySelector("input[id='project']");
-        project.value = project_data[i]["name"];
+        project.value = project_data[i-1]["name"];
         let duration = form.querySelector("input[id='duration']");
-        duration.value = project_data[i]["duration"];
+        duration.value = project_data[i-1]["duration"];
         let organisation = form.querySelector("input[id='organisation-project']");
-        organisation.value = project_data[i]["organization"];
+        organisation.value = project_data[i-1]["organization"];
         let project_detail = form.querySelector("textarea[id='project-detail']");
-        project_detail.value = project_data[i]["details"];
+        let prj_str = ""
+        project_data[i-1]["details"].forEach(point =>{
+            if(point) {
+                prj_str += point
+                prj_str += "\n"
+            }
+        })
+        project_detail.value = prj_str
     }
 
     //Certifications
 
-    let certification_forms = document.querySelectorAll("[class^='certification_section_']");
     let certification_data = data["certifications"];
-    for (let i = 0; i < certification_data.length; i++) {
-        let form = certification_forms[i];
+    for(let i=1;i<certification_data.length;i++){
+        document.querySelector("button[id='add-certifications']").click();
+    }
+    for (let i = 1; i <= certification_data.length; i++) {
+        let form = document.querySelector(".certification_section_" + i.toString());
         let certification = form.querySelector("input[id='certification']");
-        certification.value = certification_data[i]["name"];
+        certification.value = certification_data[i-1]["name"];
         let duration = form.querySelector("input[id='duration']");
-        duration.value = certification_data[i]["duration"];
+        duration.value = certification_data[i-1]["duration"];
         let organisation = form.querySelector("input[id='organisation']");
-        organisation.value = certification_data[i]["organization"];
+        organisation.value = certification_data[i-1]["organization"];
         let certification_detail = form.querySelector("textarea[id='certification-detail']");
-        certification_detail.value = certification_data[i]["details"];
+        let cert_str = ""
+        certification_data[i-1]["details"].forEach(point =>{
+            if(point) {
+                cert_str += point
+                cert_str += "\n"
+            }
+        })
+        certification_detail.value = cert_str
   }
 }
 
@@ -595,10 +631,10 @@ function extract_data(){
     let fullname = header_form_1.querySelector("input[id='name']").value;
     let linkedin = header_form_1.querySelector("input[id='linkedIn']").value;
     let header_form_2 = document.querySelector(".header-inputs2");
-    let email = header_form_2.querySelector("input[id='email']").getAttribute('value');
-    let phone = header_form_2.querySelector("input[id='phone']").getAttribute('value');
-    let github = header_form_2.querySelector("input[id='github']").getAttribute('value');
-    let summary = document.querySelector("textarea[id='summary-detail']").getAttribute('value');
+    let email = header_form_2.querySelector("input[id='email']").value;
+    let phone = header_form_2.querySelector("input[id='phone']").value;
+    let github = header_form_2.querySelector("input[id='github']").value;
+    let summary = document.querySelector("textarea[id='summary-detail']").value;
     extract["fullname"] = fullname
     extract["linkedin"] = linkedin
     extract["email"] = email
@@ -610,43 +646,24 @@ function extract_data(){
     extract["experience"] = []
     extract["projects"] = []
     extract["certifications"] = []
+    extract["skills"] = []
+    let skills_forms = document.querySelectorAll("form[class*='skill_section_']");
+  skills_forms.forEach(form => {
+      let skill_item = {};
+      skill_item["category"] = form.querySelector("input[id='skill_category_id']").value;
+      let skill_str = form.querySelector("input[id='skill_skills_id']").value;
+      skill_item["skills"] = skill_str.split(", ")
+      extract["skills"].push(skill_item);
+  });
 
-    for(let i=1;i<=skill_section;i++){
-        let skill = {}
-        let skill_form = document.querySelector(".skill_section_" + i.toString())
-        let category_ele = skill_form.querySelector("input[id='skill_category_id']") !== null
-        if(category_ele ){
-            skill["category"] = skill_form.querySelector("input[id='skill_category_id']").getAttribute('value');
-        }
-        else {
-            continue
-        }
-        // console.log(skill_form.querySelector("input[id='skill_skils_id']"))
-        let skill_ele = skill_form.querySelector("input[id='skill_skils_id']") !== null
-        if (skill_ele){
-            let skills_list = skill_form.querySelector("input[id='skill_skils_id']").getAttribute('value');
-            if(skills_list !== null) {
-                skill["skills"] = skills_list.split(", ");
-            }
-            else {
-                skill["skills"] = []
-            }
-        }
-        else {
-            continue
-        }
 
-        extract["skills"].push(skill);
-    }
-
-    for(let i=1;i<=education_section;i++){
-        let education_forms = document.querySelectorAll("[class^='education_section_']");
+        let education_forms = document.querySelectorAll("form[class^='education_section_']");
   education_forms.forEach(form => {
         let education_item = {};
         education_item["degree"] = form.querySelector("input[id='degree']").value;
         education_item["duration"] = form.querySelector("input[id='duration']").value;
         education_item["university"] = form.querySelector("input[id='university']").value;
-        education_item["gpa"] = form.querySelector("input[id='gpa']").value;
+        education_item["gpa"] = form.querySelector("input[name='gpa']").value;
 
     education_item["coursework"] = [];
     let coursework_bullets = form.querySelectorAll("input[id='coursework-bullet']");
@@ -659,47 +676,38 @@ function extract_data(){
     extract["education"].push(education_item);
   });
 
-    }
 
-    for(let i=1;i<=experience_section;i++){
         let experience_forms = document.querySelectorAll("[class^='experience_section_']");
     experience_forms.forEach(form => {
         let experience_item = {};
         experience_item["position"] = form.querySelector("input[id='experience']").value;
         experience_item["duration"] = form.querySelector("input[id='duration']").value;
         experience_item["organization"] = form.querySelector("input[id='organisation']").value;
-        experience_item["details"] = form.querySelector("textarea[id='experience-detail']").value;
+        experience_item["details"] = form.querySelector("textarea[id='experience-detail']").value.split("\n");
         extract["experience"].push(experience_item);
     });
-}
 
-    for(let i=1;i<=project_section;i++){
         let project_forms = document.querySelectorAll("[class^='project_section_']");
   project_forms.forEach(form => {
         let project_item = {};
         project_item["name"] = form.querySelector("input[id='project']").value;
         project_item["duration"] = form.querySelector("input[id='duration']").value;
         project_item["organization"] = form.querySelector("input[id='organisation-project']").value;
-        project_item["details"] = form.querySelector("textarea[id='project-detail']").value;
+        project_item["details"] = form.querySelector("textarea[id='project-detail']").value.split("\n");
         extract["projects"].push(project_item);
   });
-}
-    for(let i=1;i<=certification_section;i++){
         let certification_forms = document.querySelectorAll("[class^='certification_section_']");
   certification_forms.forEach(form => {
         let certification_item = {};
         certification_item["name"] = form.querySelector("input[id='certification']").value;
         certification_item["duration"] = form.querySelector("input[id='duration']").value;
         certification_item["organization"] = form.querySelector("input[id='organisation']").value;
-        certification_item["details"] = form.querySelector("textarea[id='certification-detail']").value;
+        certification_item["details"] = form.querySelector("textarea[id='certification-detail']").value.split("\n");
         extract["certifications"].push(certification_item);
   });
-    }
 
     console.log(extract)
     setCookie("extract_data", JSON.stringify(extract))
-
-
-
+    window.location.assign("/saveResume")
 
 }

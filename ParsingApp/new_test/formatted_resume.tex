@@ -4,39 +4,121 @@
         \begin{document}
 
         \introduction[
-            fullname=Vishva Deliwala,
-            email=deliwalv@uwindsor.ca,
-            phone=226-758-6030,
-            linkedin=,
-            github=
+            fullname=name,
+            email=email,
+            phone=mobile,
+            linkedin=linkedin,
+            github=git
         ]
 
-        \summary
+        \summary{summary}
 
         \education{
             
+            \educationItem[
+                university=uni1,
+                graduation=2023,
+                grade=10,
+                program=degree1,
+                coursework=coursework1
+            ]
+        
+            \educationItem[
+                university=uni2,
+                graduation=2021,
+                grade=9,
+                program=degree2,
+                coursework=coursework2
+            ]
+        
         }
 
         \skills{
             \skillItem[
-            category=
-            skills=: Python{{,}}  Java{{,}}  JavaScript{{,}}  C{{,}}  R{{,}}  Dart{{,}} Frameworks/Libraries: NumPy{{,}}  Pandas{{,}}  Selenium WebDriver{{,}}  Flutter{{,}} Database Systems: MS SQL Server{{,}}  Firebase{{,}}  MongoDB{{,}} Operating Systems: Linux{{,}}  MacOS{{,}}  UNIX{{,}}  Windows 11{{,}} Tools/Methodologies: Scrum{{,}}  Agile{{,}}  GIT{{,}}  GitHub Docker{{,}} {{,}} 
-        ]
+            category=category1,
+            skills=skills1{,} skill2{,} skill3
+        ] \\
+        \skillItem[
+            category=category2,
+            skills=skill4{,} skill5
+        ] \\
         
         }
 
         \begin{workSection}{Experience}
             
+            \experienceItem[
+                company=org1,
+                position=exp1,
+                duration=2023
+            ]
+            
+            \begin{itemize}
+                \itemsep -6pt {}\item point1\item point2
+            \end{itemize}
+        
+            \experienceItem[
+                company=org2,
+                position=exp2,
+                duration=2021
+            ]
+            
+            \begin{itemize}
+                \itemsep -6pt {}\item point1\item point2\item point3
+            \end{itemize}
+        
 
 
         \end{workSection}
 
         \begin{workSection}{Academic projects}
+            
+                \customItem[
+                    title=prj1,
+                    organization=org1,
+                    duration=2021
+                ]
+                
+                \begin{itemize}
+                    \itemsep -6pt {}\item point1\item point2\item point3
+                \end{itemize}
+            
+                \customItem[
+                    title=prj2,
+                    organization=org2,
+                    duration=20123
+                ]
+                
+                \begin{itemize}
+                    \itemsep -6pt {}\item point
+                \end{itemize}
              
 
         \end{workSection}  
-
-
+        \begin{workSection}  {Certifications}
+            
+                    \customItem[
+                        title=cert1,
+                        organization=org1,
+                        duration=dur1
+                    ]
+                    
+                    \begin{itemize}
+                        \itemsep -6pt {}\item point1\item point2
+                    \end{itemize}
+                
+                    \customItem[
+                        title=cert2,
+                        organization=org2,
+                        duration=dur2
+                    ]
+                    
+                    \begin{itemize}
+                        \itemsep -6pt {}\item poinrt1\item point2\item point3
+                    \end{itemize}
+                
+            
+        \end{workSection}
 
         \end{document}  
     

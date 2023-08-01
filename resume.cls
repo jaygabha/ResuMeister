@@ -85,8 +85,8 @@
 }
 
 \newkeycommand{\educationItem}[university,college,program,graduation,grade,coursework]{
-    {\bf \commandkey{program}} \hfill {Graduating \commandkey{graduation}} \\
-    {\commandkey{university}} \hfill \ifcommandkey{grade}{\commandkey{grade}}{} \\
+    {\bf \commandkey{program}} \hfill {\commandkey{graduation}} \\
+    {\commandkey{university}} \hfill \ifcommandkey{grade}{\commandkey{grade} GPA}{} \\
     \ifcommandkey{college}{\commandkey{college}}{} \\
     \ifcommandkey{coursework}{Relevant coursework: \commandkey{coursework}}{}
 }
@@ -115,11 +115,12 @@
   \end{list}
 }
 
-\newkeycommand{\experienceItem}[company, position, location, duration]{
-    \textbf{\commandkey{company}, \commandkey{location}: \commandkey{position}} \hfill {\commandkey{duration}}
+\newkeycommand{\experienceItem}[company, position, duration]{
+    \textbf{\commandkey{company}: \commandkey{position}} \hfill {\commandkey{duration}}
 }
 
-\newkeycommand{\customItem}[title, duration, keyHighlight]{
+\newkeycommand{\customItem}[title, duration, organization, keyHighlight]{
     \textbf{\commandkey{title}} \hfill {\commandkey{duration}} \\
+    \commandkey{organization}
     \ifcommandkey{keyHighlight}{\commandkey{keyHighlight}}{}
 }
