@@ -74,7 +74,8 @@ body{
   .nav-bar{
     height: 8vh;
     width: 100vw;
-    background-color: #fff;
+    background-color: #18454e;
+      color: #fff;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
