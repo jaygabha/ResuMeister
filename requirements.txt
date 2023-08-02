@@ -11,3 +11,4 @@ requests
 spacy
 en_core_web_sm
 skillNer~=1.0.3
+ipython
