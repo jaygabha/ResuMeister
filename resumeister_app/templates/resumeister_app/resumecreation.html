@@ -23,7 +23,7 @@
     <div class="main-body">
         <div class="level1">
             <div class="left-sec">
-        <h1>Upload Existing Resume</h1>
+        <h1>Give title for new resume</h1>
         <form action="{% url 'resumeister_app:ResumeCreatiom' %}" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             {% if msg %}
