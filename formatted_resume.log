@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.9.26)  1 AUG 2023 22:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.9.26)  2 AUG 2023 16:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -232,7 +232,7 @@ File: l3backend-pdftex.def 2022-02-07 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count288
 \l__pdf_internal_box=\box50
 )
-No file formatted_resume.aux.
+(./formatted_resume.aux)
 \openout1 = `formatted_resume.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 4.
@@ -253,6 +253,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 4.
 LaTeX Font Info:    ... okay on input line 4.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 4.
 LaTeX Font Info:    ... okay on input line 4.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -328,6 +329,7 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 4.
 LaTeX Info: Redefining \pageref on input line 4.
 LaTeX Info: Redefining \nameref on input line 4.
+ (./formatted_resume.out) (./formatted_resume.out)
 \@outlinefile=\write3
 \openout3 = `formatted_resume.out'.
 
@@ -341,7 +343,8 @@ LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 13.67995pt on input line 12.
 LaTeX Font Info:    Trying to load font information for TS1+phv on input line 1
 2.
- (/usr/local/texlive/2022/texmf-dist/tex/latex/psnfss/ts1phv.fd
+
+(/usr/local/texlive/2022/texmf-dist/tex/latex/psnfss/ts1phv.fd
 File: ts1phv.fd 2020/03/25 scalable font definitions for TS1/phv.
 )
 LaTeX Font Info:    Font shape `TS1/phv/b/n' will be
@@ -373,9 +376,9 @@ End of file on the terminal!
 
  
 Here is how much of TeX's memory you used:
- 9701 strings out of 478268
- 153363 string characters out of 5846347
- 447883 words of memory out of 5000000
+ 9707 strings out of 478268
+ 153489 string characters out of 5846347
+ 448123 words of memory out of 5000000
  27817 multiletter control sequences out of 15000+600000
  478242 words of font info for 35 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
