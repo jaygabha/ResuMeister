@@ -238,14 +238,21 @@ def extract_skills_from_job_description(job_description):
 
     # Extract 'doc_node_value' from 'full_matches' and 'ngram_scored'
     doc_node_values = []
+    count = 0
 
     # Extract 'doc_node_value' from 'full_matches'
     for item in annotations['results']['full_matches']:
+        if count>10:
+            break
         doc_node_values.append(item['doc_node_value'])
-
+        count+=1
+    count = 0
     # Extract 'doc_node_value' from 'ngram_scored'
     for item in annotations['results']['ngram_scored']:
+        if count>10:
+            break
         doc_node_values.append(item['doc_node_value'])
+        count+=1
 
     return doc_node_values
 
