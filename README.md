@@ -14,6 +14,14 @@ ResuMeister is a web application that provides users with an intuitive interface
 
 - **Download in multiple formats**: Once you're satisfied with your resume, you can download it in various formats, including PDF, Word, and plain text, ensuring compatibility with different job application systems.
 
+<img width="1367" alt="Screenshot 2023-08-05 at 10 29 18 AM" src="https://github.com/jaygabha/ResuMeister/assets/44423214/98e848bd-e3eb-4fe1-8231-a4ac9a34c143">
+
+<img width="1328" alt="Screenshot 2023-08-05 at 10 29 31 AM" src="https://github.com/jaygabha/ResuMeister/assets/44423214/30506ff4-f907-4b1e-8073-52985f5abf0b">
+
+<img width="1061" alt="Screenshot 2023-08-05 at 10 29 47 AM" src="https://github.com/jaygabha/ResuMeister/assets/44423214/47c4984f-8e9f-4e05-a6db-b2dc52c483d6">
+
+<img width="928" alt="Screenshot 2023-08-05 at 10 30 32 AM" src="https://github.com/jaygabha/ResuMeister/assets/44423214/2534a8fa-e819-418e-8f60-449124ef9d0c">
+
 ## Technologies Used
 
 - **Frontend**: ResuMeister is built using HTML, CSS, and VanillaJS. These technologies provide a lightweight and fast user interface, enabling a seamless resume-building experience.
@@ -32,8 +40,10 @@ To run ResuMeister locally, follow these steps:
 6. pip install -r requirements.txt
 7. Run ResuMeister app
 8. Access ResuMeister in your web browser at the specified localhost address.
-
-For detailed installation and setup instructions, please refer to the respective documentation provided in the ResuMeister repository.
+9. Setup the flask ParsingApp
+10. create a new venv for flask
+11. run setup.sh
+12. run flask server
 
 ## License
 
